@@ -1,18 +1,18 @@
 project:
-  name: Prometheus Proxy by AppsCode
-  shortName: Prometheus Proxy
+  name: Platform UI by AppsCode
+  shortName: Platform UI
   url: https://github.com/bytebuilders
-  description: ByteBuilders Prometheus Proxy
-  app: a Prometheus Proxy
+  description: ByteBuilders Platform UI
+  app: a Platform UI
 repository:
   url: https://charts.appscode.com/stable/
   name: appscode
 chart:
-  name: prom-proxy
+  name: platform-ui
   values: -- generate from values file --
   valuesExample: -- generate from values file --
 prerequisites:
 - Kubernetes 1.19+
 release:
-  name: prom-proxy
+  name: platform-ui
   namespace: ace-system
