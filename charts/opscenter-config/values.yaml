@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 nameOverride: ""
-fullnameOverride: opscenter
+fullnameOverride: ""
 
 global:
   # License for the product.
