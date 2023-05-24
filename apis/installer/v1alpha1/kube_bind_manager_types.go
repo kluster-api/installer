@@ -22,12 +22,12 @@ import (
 )
 
 const (
-	ResourceKindDeployUi = "DeployUi"
-	ResourceDeployUi     = "deployui"
-	ResourceDeployUis    = "deployuis"
+	ResourceKindKubeBindManager = "KubeBindManager"
+	ResourceKubeBindManager     = "kubebindmanager"
+	ResourceKubeBindManagers    = "kubebindmanagers"
 )
 
-// DeployUi defines the schama for DeployUi Installer.
+// KubeBindManager defines the schama for KubeBindManager operator installer.
 
 // +genclient
 // +genclient:skipVerbs=updateStatus
@@ -35,36 +35,32 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=deployuis,singular=deployui,categories={kubeops,appscode}
-type DeployUi struct {
+// +kubebuilder:resource:path=kubebindmanagers,singular=kubebindmanager,categories={kubeops,appscode}
+type KubeBindManager struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              DeployUiSpec `json:"spec,omitempty"`
+	Spec              KubeBindManagerSpec `json:"spec,omitempty"`
 }
 
-// DeployUiSpec is the schema for DeployUi Operator values file
-type DeployUiSpec struct {
-	ReplicaCount int `json:"replicaCount"`
-	//+optional
-	RegistryFQDN string         `json:"registryFQDN"`
-	Image        ImageReference `json:"image"`
-	//+optional
-	ImagePullSecrets []string `json:"imagePullSecrets"`
+// KubeBindManagerSpec is the schema for Identity Server values file
+type KubeBindManagerSpec struct {
 	//+optional
 	NameOverride string `json:"nameOverride"`
 	//+optional
-	FullnameOverride string               `json:"fullnameOverride"`
-	ServiceAccount   LocalObjectReference `json:"serviceAccount"`
+	FullnameOverride string    `json:"fullnameOverride"`
+	ReplicaCount     int       `json:"replicaCount"`
+	RegistryFQDN     string    `json:"registryFQDN"`
+	Image            Container `json:"image"`
+	//+optional
+	ImagePullSecrets []string           `json:"imagePullSecrets"`
+	ImagePullPolicy  string             `json:"imagePullPolicy"`
+	ServiceAccount   ServiceAccountSpec `json:"serviceAccount"`
 	//+optional
 	PodAnnotations map[string]string `json:"podAnnotations"`
-	//+optional
+	// PodSecurityContext holds pod-level security attributes and common container settings.
+	// Optional: Defaults to empty.  See type description for default values of each field.
+	// +optional
 	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext"`
-	//+optional
-	SecurityContext *core.SecurityContext `json:"securityContext"`
-	Service         AceServiceSpec        `json:"service"`
-	//+optional
-	Resources   core.ResourceRequirements `json:"resources"`
-	Autoscaling AutoscalingSpec           `json:"autoscaling"`
 	//+optional
 	NodeSelector map[string]string `json:"nodeSelector"`
 	// If specified, the pod's tolerations.
@@ -72,15 +68,16 @@ type DeployUiSpec struct {
 	Tolerations []core.Toleration `json:"tolerations"`
 	// If specified, the pod's scheduling constraints
 	// +optional
-	Affinity *core.Affinity `json:"affinity"`
+	Affinity   *core.Affinity `json:"affinity"`
+	Monitoring Monitoring     `json:"monitoring"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// DeployUiList is a list of DeployUis
-type DeployUiList struct {
+// KubeBindManagerList is a list of KubeBindManagers
+type KubeBindManagerList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of DeployUi CRD objects
-	Items []DeployUi `json:"items,omitempty"`
+	// Items is a list of KubeBindManager CRD objects
+	Items []KubeBindManager `json:"items,omitempty"`
 }

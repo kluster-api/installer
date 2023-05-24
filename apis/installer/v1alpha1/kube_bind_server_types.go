@@ -22,12 +22,12 @@ import (
 )
 
 const (
-	ResourceKindClusterUi = "ClusterUi"
-	ResourceClusterUi     = "clusterui"
-	ResourceClusterUis    = "clusteruis"
+	ResourceKindKubeBindServer = "KubeBindServer"
+	ResourceKubeBindServer     = "kubebindserver"
+	ResourceKubeBindServers    = "kubebindservers"
 )
 
-// ClusterUi defines the schama for ClusterUi Installer.
+// KubeBindServer defines the schama for KubeBindServer operator installer.
 
 // +genclient
 // +genclient:skipVerbs=updateStatus
@@ -35,36 +35,32 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=clusteruis,singular=clusterui,categories={kubeops,appscode}
-type ClusterUi struct {
+// +kubebuilder:resource:path=kubebindservers,singular=kubebindserver,categories={kubeops,appscode}
+type KubeBindServer struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              ClusterUiSpec `json:"spec,omitempty"`
+	Spec              KubeBindServerSpec `json:"spec,omitempty"`
 }
 
-// ClusterUiSpec is the schema for ClusterUi Operator values file
-type ClusterUiSpec struct {
-	ReplicaCount int `json:"replicaCount"`
-	//+optional
-	RegistryFQDN string         `json:"registryFQDN"`
-	Image        ImageReference `json:"image"`
-	//+optional
-	ImagePullSecrets []string `json:"imagePullSecrets"`
+// KubeBindServerSpec is the schema for Identity Server values file
+type KubeBindServerSpec struct {
 	//+optional
 	NameOverride string `json:"nameOverride"`
 	//+optional
-	FullnameOverride string               `json:"fullnameOverride"`
-	ServiceAccount   LocalObjectReference `json:"serviceAccount"`
+	FullnameOverride string    `json:"fullnameOverride"`
+	ReplicaCount     int       `json:"replicaCount"`
+	RegistryFQDN     string    `json:"registryFQDN"`
+	Image            Container `json:"image"`
+	//+optional
+	ImagePullSecrets []string           `json:"imagePullSecrets"`
+	ImagePullPolicy  string             `json:"imagePullPolicy"`
+	ServiceAccount   ServiceAccountSpec `json:"serviceAccount"`
 	//+optional
 	PodAnnotations map[string]string `json:"podAnnotations"`
-	//+optional
+	// PodSecurityContext holds pod-level security attributes and common container settings.
+	// Optional: Defaults to empty.  See type description for default values of each field.
+	// +optional
 	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext"`
-	//+optional
-	SecurityContext *core.SecurityContext `json:"securityContext"`
-	Service         AceServiceSpec        `json:"service"`
-	//+optional
-	Resources   core.ResourceRequirements `json:"resources"`
-	Autoscaling AutoscalingSpec           `json:"autoscaling"`
 	//+optional
 	NodeSelector map[string]string `json:"nodeSelector"`
 	// If specified, the pod's tolerations.
@@ -72,15 +68,16 @@ type ClusterUiSpec struct {
 	Tolerations []core.Toleration `json:"tolerations"`
 	// If specified, the pod's scheduling constraints
 	// +optional
-	Affinity *core.Affinity `json:"affinity"`
+	Affinity   *core.Affinity `json:"affinity"`
+	Monitoring Monitoring     `json:"monitoring"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ClusterUiList is a list of ClusterUis
-type ClusterUiList struct {
+// KubeBindServerList is a list of KubeBindServers
+type KubeBindServerList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of ClusterUi CRD objects
-	Items []ClusterUi `json:"items,omitempty"`
+	// Items is a list of KubeBindServer CRD objects
+	Items []KubeBindServer `json:"items,omitempty"`
 }
