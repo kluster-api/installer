@@ -14,7 +14,7 @@
 
 SHELL=/bin/bash -o pipefail
 
-GO_PKG   := go.bytebuilders.dev
+GO_PKG   := go.kubeware.dev
 REPO     := $(notdir $(shell pwd))
 BIN      := installer
 
@@ -48,7 +48,7 @@ endif
 ### These variables should not need tweaking.
 ###
 
-SRC_PKGS := apis schema # directories which hold app source (not vendored)
+SRC_PKGS := apis # directories which hold app source (not vendored)
 SRC_DIRS := $(SRC_PKGS)
 
 DOCKER_PLATFORMS := linux/amd64 linux/arm linux/arm64
@@ -185,8 +185,8 @@ patch-crd-%: $(BUILD_DIRS)
 .PHONY: label-crds
 label-crds: $(BUILD_DIRS)
 	@for f in .crds/*.yaml; do \
-		echo "applying app.kubernetes.io/name=bytebuilders label to $$f"; \
-		kubectl label --overwrite -f $$f --local=true -o yaml app.kubernetes.io/name=bytebuilders > bin/crd.yaml; \
+		echo "applying app.kubernetes.io/name=kubeware label to $$f"; \
+		kubectl label --overwrite -f $$f --local=true -o yaml app.kubernetes.io/name=kubeware > bin/crd.yaml; \
 		mv bin/crd.yaml $$f; \
 	done
 
@@ -195,28 +195,15 @@ gen-values-schema: $(BUILD_DIRS)
 	@for dir in charts/*/; do \
 		dir=$${dir%*/}; \
 		dir=$${dir##*/}; \
-		crd_file=.crds/installer.bytebuilders.dev_$$(echo $$dir | tr -d '-')s.yaml; \
+		crd_file=.crds/installer.kubeware.dev_$$(echo $$dir | tr -d '-')s.yaml; \
 		if [ ! -f $${crd_file} ]; then \
 			continue; \
 		fi; \
 		yq -y --indentless '.spec.versions[0].schema.openAPIV3Schema.properties.spec | del(.description)' $${crd_file} > charts/$${dir}/values.openapiv3_schema.yaml; \
 	done
 
-.PHONY: gen-external-schema
-gen-external-schema: $(BUILD_DIRS)
-	@$(MAKE) gen-crds --no-print-directory CRD_OPTIONS=crd:generateEmbeddedObjectMeta=true,allowDangerousTypes=true
-	@for dir in schema/*/; do \
-		dir=$${dir%*/}; \
-		dir=$${dir##*/}; \
-		crd_file=.crds/installer.bytebuilders.dev_$$(echo $$dir | tr -d '-')s.yaml; \
-		if [ ! -f $${crd_file} ]; then \
-			continue; \
-		fi; \
-		yq -y --indentless '.spec.versions[0].schema.openAPIV3Schema.properties.spec | del(.description)' $${crd_file} > schema/$${dir}/values.openapiv3_schema.yaml; \
-	done
-
 .PHONY: gen-schema
-gen-schema: gen-values-schema gen-external-schema
+gen-schema: gen-values-schema
 
 .PHONY: gen-chart-doc
 gen-chart-doc: $(shell find $$(pwd)/charts -maxdepth 1 -mindepth 1 -type d -printf 'gen-chart-doc-%f ')

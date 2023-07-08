@@ -29,10 +29,10 @@ crd-importer \
     --out=./charts/ace-installer/crds
 
 crd-importer \
-    --input=https://github.com/bytebuilders/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cloud.bytebuilders.dev_credentials.yaml \
-    --input=https://github.com/bytebuilders/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cluster.bytebuilders.dev_clusterauthinfotemplates.yaml \
-    --input=https://github.com/bytebuilders/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cluster.bytebuilders.dev_clusterinfos.yaml \
-    --input=https://github.com/bytebuilders/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cluster.bytebuilders.dev_clusteruserauths.yaml \
+    --input=https://github.com/kubeware/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cloud.kubeware.dev_credentials.yaml \
+    --input=https://github.com/kubeware/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cluster.kubeware.dev_clusterauthinfotemplates.yaml \
+    --input=https://github.com/kubeware/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cluster.kubeware.dev_clusterinfos.yaml \
+    --input=https://github.com/kubeware/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cluster.kubeware.dev_clusteruserauths.yaml \
     --input=https://github.com/kubepack/kubepack/raw/${KUBEPACK_KUBEPACK_TAG}/crds/kubepack.com_plans.yaml \
     --input=https://github.com/kubepack/kubepack/raw/${KUBEPACK_KUBEPACK_TAG}/crds/kubepack.com_products.yaml \
     --out=./charts/ace/crds
@@ -70,7 +70,7 @@ KUBEDB_APIMACHINERY_TAG=${KUBEDB_APIMACHINERY_TAG:-v0.32.0}
 KUBEVAULT_APIMACHINERY_TAG=${KUBEVAULT_APIMACHINERY_TAG:-v0.14.0}
 
 crd-importer \
-    --input=https://github.com/bytebuilders/appcatalog/raw/${BYTEBUILDERS_APPCATALOG_TAG}/crds/appcatalog.appscode.com_hostedapps.yaml \
+    --input=https://github.com/kubeware/appcatalog/raw/${BYTEBUILDERS_APPCATALOG_TAG}/crds/appcatalog.appscode.com_hostedapps.yaml \
     --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_elasticsearches.yaml \
     --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_kafkas.yaml \
     --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_mariadbs.yaml \

@@ -22,20 +22,9 @@ for dir in charts/*/; do
     num_files=$(find charts/${dir}/templates -type f | wc -l)
     echo $dir
     if [ $num_files -le 1 ] ||
-        [[ "$dir" = "accounts-ui" ]] ||
-        [[ "$dir" = "ace" ]] ||
-        [[ "$dir" = "billing" ]] ||
-        [[ "$dir" = "dns-proxy" ]] ||
-        [[ "$dir" = "grafana" ]] ||
         [[ "$dir" = "kube-bind-provider" ]] ||
-        [[ "$dir" = "kube-bind-server" ]] ||
-        [[ "$dir" = "opscenter-features" ]] ||
-        [[ "$dir" = "platform-api" ]] ||
-        [[ "$dir" = "prom-proxy" ]] ||
-        [[ "$dir" = "smtprelay" ]]; then
+        [[ "$dir" = "kube-bind-server" ]]; then
         make ct CT_COMMAND=lint TEST_CHARTS=charts/$dir
-    elif [[ "$dir" = "cert-manager-webhook-ace" ]]; then
-        make ct TEST_CHARTS=charts/$dir || true
     else
         ns=app-$(date +%s | head -c 6)
         kubectl create ns $ns

@@ -1,7 +1,7 @@
 project:
   name: kube-bind Server by AppsCode
   shortName: kube-bind Server
-  url: https://github.com/bytebuilders/kube-bind-server
+  url: https://github.com/kubeware/kube-bind-server
   description: kube-bind Server for Kubernetes
   app: a kube-bind Server
 repository:

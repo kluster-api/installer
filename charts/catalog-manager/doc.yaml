@@ -1,18 +1,18 @@
 project:
-  name: kube-bind Server by AppsCode
-  shortName: kube-bind Server
-  url: https://github.com/kubeware/kube-bind-server
-  description: kube-bind Server for Kubernetes
-  app: a kube-bind Server
+  name: Appcatalog by AppsCode
+  shortName: Appcatalog
+  url: https://github.com/kubeware/catalog-manager
+  description: Appcatalog for Kubernetes
+  app: an Appcatalog
 repository:
   url: https://charts.appscode.com/stable/
   name: appscode
 chart:
-  name: kube-bind-server
+  name: catalog-manager
   values: -- generate from values file --
   valuesExample: -- generate from values file --
 prerequisites:
 - Kubernetes 1.21+
 release:
-  name: kube-bind-server
+  name: catalog-manager
   namespace: kubeops

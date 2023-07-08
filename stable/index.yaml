@@ -1,0 +1,57 @@
+apiVersion: v1
+entries:
+  catalog-manager:
+  - apiVersion: v2
+    appVersion: v0.0.1
+    created: "2023-07-07T21:33:30.776642-07:00"
+    description: A Helm chart for Appcatalog Operator by AppsCode
+    digest: d2e5253d918d553dcd89408a0747b4f7333b4b71daa05bc3255d31b4f3b87eed
+    home: https://github.com/kubeware/catalog-manager
+    icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
+    maintainers:
+    - email: support@appscode.com
+      name: appscode
+    name: catalog-manager
+    sources:
+    - https://github.com/kubeware/catalog-manager
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/kubeware/installer/master/stable/catalog-manager/catalog-manager-v2023.03.23.tgz
+    version: v2023.03.23
+  kube-bind-provider:
+  - apiVersion: v2
+    appVersion: v0.0.1
+    created: "2023-07-07T21:33:30.783278-07:00"
+    description: A Helm chart for kube-bind provider by AppsCode
+    digest: 0de198b3d3e87dbb64c90c684e2f775bbeedbb2e947e71b75b965ed98d101c10
+    home: https://github.com/kubeware/kube-bind-server
+    icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
+    maintainers:
+    - email: support@appscode.com
+      name: appscode
+    name: kube-bind-provider
+    sources:
+    - https://github.com/kubeware/kube-bind-server
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/kubeware/installer/master/stable/kube-bind-provider/kube-bind-provider-v2023.03.23.tgz
+    version: v2023.03.23
+  kube-bind-server:
+  - apiVersion: v2
+    appVersion: v0.0.1
+    created: "2023-07-07T21:33:30.789388-07:00"
+    description: A Helm chart for kube-bind Server by AppsCode
+    digest: 1e2233e6de9446d03bbb2809d329a7605a8cac16a9d7dc64d8fe6b5e91ceef3e
+    home: https://github.com/kubeware/kube-bind-server
+    icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
+    maintainers:
+    - email: support@appscode.com
+      name: appscode
+    name: kube-bind-server
+    sources:
+    - https://github.com/kubeware/kube-bind-server
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/kubeware/installer/master/stable/kube-bind-server/kube-bind-server-v2023.03.23.tgz
+    version: v2023.03.23
+generated: "2023-07-07T21:33:30.769566-07:00"

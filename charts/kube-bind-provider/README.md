@@ -1,6 +1,6 @@
 # kube-bind Server
 
-[kube-bind Server by AppsCode](https://github.com/bytebuilders/kube-bind-server) - kube-bind Server for Kubernetes
+[kube-bind Server by AppsCode](https://github.com/kubeware/kube-bind-server) - kube-bind Server for Kubernetes
 
 ## TL;DR;
 
