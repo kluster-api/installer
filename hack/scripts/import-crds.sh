@@ -14,73 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-BYTEBUILDERS_RESOURCE_MODEL_TAG=${BYTEBUILDERS_RESOURCE_MODEL_TAG:-master}
-KUBEPACK_KUBEPACK_TAG=${KUBEPACK_KUBEPACK_TAG:-master}
+KUBEWARE_CATALOG_TAG=${KUBEWARE_CATALOG_TAG:-master}
 
 crd-importer \
-    --input=https://github.com/fluxcd/source-controller/raw/v0.30.1/config/crd/bases/source.toolkit.fluxcd.io_helmrepositories.yaml \
-    --input=https://github.com/kmodules/resource-metadata/raw/master/crds/ui.k8s.appscode.com_features.yaml \
-    --input=https://github.com/kmodules/resource-metadata/raw/master/crds/ui.k8s.appscode.com_featuresets.yaml \
-    --out=./charts/opscenter-features/crds
-
-crd-importer \
-    --input=https://github.com/fluxcd/source-controller/raw/v0.30.1/config/crd/bases/source.toolkit.fluxcd.io_helmrepositories.yaml \
-    --input=https://github.com/fluxcd/helm-controller/raw/v0.32.2/config/crd/bases/helm.toolkit.fluxcd.io_helmreleases.yaml \
-    --out=./charts/ace-installer/crds
-
-crd-importer \
-    --input=https://github.com/kubeware/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cloud.kubeware.dev_credentials.yaml \
-    --input=https://github.com/kubeware/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cluster.kubeware.dev_clusterauthinfotemplates.yaml \
-    --input=https://github.com/kubeware/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cluster.kubeware.dev_clusterinfos.yaml \
-    --input=https://github.com/kubeware/resource-model/raw/${BYTEBUILDERS_RESOURCE_MODEL_TAG}/crds/cluster.kubeware.dev_clusteruserauths.yaml \
-    --input=https://github.com/kubepack/kubepack/raw/${KUBEPACK_KUBEPACK_TAG}/crds/kubepack.com_plans.yaml \
-    --input=https://github.com/kubepack/kubepack/raw/${KUBEPACK_KUBEPACK_TAG}/crds/kubepack.com_products.yaml \
-    --out=./charts/ace/crds
-
-crd-importer \
-    --input=https://github.com/kubeops/external-dns-operator/raw/v0.0.1/crds/external-dns.appscode.com_externaldns.yaml \
-    --out=./charts/ace/crds
-
-crd-importer \
-    --input=https://github.com/open-viz/trickster-config/raw/master/config/crd/bases/trickstercache.org_trickstercaches.yaml \
-    --input=https://github.com/open-viz/trickster-config/raw/master/config/crd/bases/trickstercache.org_tricksters.yaml \
-    --out=./charts/ace/crds
-
-crd-importer \
-    --input=https://github.com/prometheus-operator/prometheus-operator/raw/v0.59.1/example/prometheus-operator-crd/monitoring.coreos.com_servicemonitors.yaml \
-    --out=./charts/license-proxyserver/crds
-
-KMODULES_RESOURCE_METADATA_TAG=${KMODULES_RESOURCE_METADATA_TAG:-v0.12.1}
-KUBEPACK_PRESET_TAG=${KUBEPACK_PRESET_TAG:-v0.0.2}
-HELM_X_APIMACHINERY_TAG=${HELM_X_APIMACHINERY_TAG:-master}
-
-crd-importer \
-    --input=https://github.com/x-helm/apimachinery/raw/${HELM_X_APIMACHINERY_TAG}/crds/charts.x-helm.dev_chartpresets.yaml \
-    --input=https://github.com/x-helm/apimachinery/raw/${HELM_X_APIMACHINERY_TAG}/crds/charts.x-helm.dev_clusterchartpresets.yaml \
-    --out=./charts/capi-ui-presets/crds
-
-crd-importer \
-    --input=https://github.com/kmodules/resource-metadata/raw/${KMODULES_RESOURCE_METADATA_TAG}/crds/ui.k8s.appscode.com_resourceeditors.yaml \
-    --input=https://github.com/x-helm/apimachinery/raw/${HELM_X_APIMACHINERY_TAG}/crds/charts.x-helm.dev_chartpresets.yaml \
-    --input=https://github.com/x-helm/apimachinery/raw/${HELM_X_APIMACHINERY_TAG}/crds/charts.x-helm.dev_clusterchartpresets.yaml \
-    --out=./charts/monitoring-ui-presets/crds
-
-BYTEBUILDERS_APPCATALOG_TAG=${BYTEBUILDERS_APPCATALOG_TAG:-v0.0.1}
-KUBEDB_APIMACHINERY_TAG=${KUBEDB_APIMACHINERY_TAG:-v0.32.0}
-KUBEVAULT_APIMACHINERY_TAG=${KUBEVAULT_APIMACHINERY_TAG:-v0.14.0}
-
-crd-importer \
-    --input=https://github.com/kubeware/appcatalog/raw/${BYTEBUILDERS_APPCATALOG_TAG}/crds/appcatalog.appscode.com_hostedapps.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_elasticsearches.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_kafkas.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_mariadbs.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_memcacheds.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_mongodbs.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_mysqls.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_perconaxtradbs.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_pgbouncers.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_postgreses.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_proxysqls.yaml \
-    --input=https://github.com/kubedb/apimachinery/raw/${KUBEDB_APIMACHINERY_TAG}/crds/kubedb.com_redises.yaml \
-    --input=https://github.com/kubevault/apimachinery/raw/${KUBEVAULT_APIMACHINERY_TAG}/crds/kubevault.com_vaultservers.yaml \
-    --out=./charts/appcatalog/crds
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_elasticsearchbindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_kafkabindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_mariadbbindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_memcachedbindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_mongodbbindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_mysqlbindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_perconaxtradbbindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_pgbouncerbindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_postgresbindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_proxysqlbindings.yaml \
+    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_redisbindings.yaml \
+    --out=./charts/catalog-manager/crds

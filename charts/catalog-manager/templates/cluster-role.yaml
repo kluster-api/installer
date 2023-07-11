@@ -6,10 +6,8 @@ metadata:
     {{- include "catalog-manager.labels" . | nindent 4 }}
 rules:
 - apiGroups:
-  - catalog-manager.appscode.com
-  resources:
-  - hostedapps
-  - hostedapps/status
+  - catalog.kubeware.dev
+  resources: ["*"]
   verbs: ["get", "list", "watch", "patch"]
 - apiGroups:
   - kubedb.com
