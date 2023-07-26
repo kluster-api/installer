@@ -1,4 +1,4 @@
-module go.kubeware.dev/installer
+module go.kompute.dev/installer
 
 go 1.18
 

@@ -14,7 +14,7 @@
 
 SHELL=/bin/bash -o pipefail
 
-GO_PKG   := go.kubeware.dev
+GO_PKG   := go.kompute.dev
 REPO     := $(notdir $(shell pwd))
 BIN      := installer
 
@@ -195,7 +195,7 @@ gen-values-schema: $(BUILD_DIRS)
 	@for dir in charts/*/; do \
 		dir=$${dir%*/}; \
 		dir=$${dir##*/}; \
-		crd_file=.crds/installer.kubeware.dev_$$(echo $$dir | tr -d '-')s.yaml; \
+		crd_file=.crds/installer.kompute.dev_$$(echo $$dir | tr -d '-')s.yaml; \
 		if [ ! -f $${crd_file} ]; then \
 			continue; \
 		fi; \
