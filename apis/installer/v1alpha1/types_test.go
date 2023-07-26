@@ -20,16 +20,14 @@ import (
 	"os"
 	"testing"
 
-	"go.kubeware.dev/installer/apis/installer/v1alpha1"
+	"go.klusters.dev/installer/apis/installer/v1alpha1"
 
 	sc "kmodules.xyz/schema-checker"
 )
 
 func TestDefaultValues(t *testing.T) {
 	checker := sc.New(os.DirFS("../../.."),
-		sc.TestCase{Obj: v1alpha1.CatalogManagerSpec{}},
-		sc.TestCase{Obj: v1alpha1.KubeBindProviderSpec{}},
-		sc.TestCase{Obj: v1alpha1.KubeBindServerSpec{}},
+		sc.TestCase{Obj: v1alpha1.DockerMachineOperatorSpec{}},
 	)
 	checker.TestAll(t)
 }

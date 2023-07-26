@@ -1,4 +1,4 @@
-module go.kubeware.dev/installer
+module go.klusters.dev/installer
 
 go 1.18
 
