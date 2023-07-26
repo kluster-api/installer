@@ -18,6 +18,24 @@ entries:
     urls:
     - https://raw.githubusercontent.com/kubeware/installer/master/stable/catalog-manager/catalog-manager-v2023.03.23.tgz
     version: v2023.03.23
+  dockermachine-operator:
+  - apiVersion: v2
+    appVersion: v0.0.1
+    created: "2023-07-26T16:37:38.756626178Z"
+    description: A Helm chart for Appcatalog Operator by AppsCode
+    digest: 189043522973f6b26621af7d678c9bee25e84faf9d653a3b3e27b2cdc057bf91
+    home: https://github.com/kubeware/dockermachine-operator
+    icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
+    maintainers:
+    - email: support@appscode.com
+      name: appscode
+    name: dockermachine-operator
+    sources:
+    - https://github.com/kubeware/dockermachine-operator
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/kubeware/installer/master/stable/dockermachine-operator/dockermachine-operator-v2023.03.23.tgz
+    version: v2023.03.23
   kube-bind-provider:
   - apiVersion: v2
     appVersion: v0.0.1
@@ -54,4 +72,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/kubeware/installer/master/stable/kube-bind-server/kube-bind-server-v2023.03.23.tgz
     version: v2023.03.23
-generated: "2023-07-19T14:25:10.368918+02:00"
+generated: "2023-07-26T16:37:38.755031768Z"
