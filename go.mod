@@ -1,4 +1,4 @@
-module go.kubeware.dev/installer
+module go.cluster-api.dev/installer
 
 go 1.18
 
