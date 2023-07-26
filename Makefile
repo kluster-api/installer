@@ -14,7 +14,7 @@
 
 SHELL=/bin/bash -o pipefail
 
-GO_PKG   := go.kubeware.dev
+GO_PKG   := go.kompute.dev
 REPO     := $(notdir $(shell pwd))
 BIN      := installer
 
@@ -185,8 +185,8 @@ patch-crd-%: $(BUILD_DIRS)
 .PHONY: label-crds
 label-crds: $(BUILD_DIRS)
 	@for f in .crds/*.yaml; do \
-		echo "applying app.kubernetes.io/name=kubeware label to $$f"; \
-		kubectl label --overwrite -f $$f --local=true -o yaml app.kubernetes.io/name=kubeware > bin/crd.yaml; \
+		echo "applying app.kubernetes.io/name=kompute label to $$f"; \
+		kubectl label --overwrite -f $$f --local=true -o yaml app.kubernetes.io/name=kompute > bin/crd.yaml; \
 		mv bin/crd.yaml $$f; \
 	done
 
@@ -195,7 +195,7 @@ gen-values-schema: $(BUILD_DIRS)
 	@for dir in charts/*/; do \
 		dir=$${dir%*/}; \
 		dir=$${dir##*/}; \
-		crd_file=.crds/installer.kubeware.dev_$$(echo $$dir | tr -d '-')s.yaml; \
+		crd_file=.crds/installer.kompute.dev_$$(echo $$dir | tr -d '-')s.yaml; \
 		if [ ! -f $${crd_file} ]; then \
 			continue; \
 		fi; \

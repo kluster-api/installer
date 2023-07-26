@@ -14,18 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-KUBEWARE_CATALOG_TAG=${KUBEWARE_CATALOG_TAG:-master}
+KOMPUTE_MACHINE_OPERATOR_TAG=${KOMPUTE_MACHINE_OPERATOR_TAG:-master}
 
 crd-importer \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_elasticsearchbindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_kafkabindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_mariadbbindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_memcachedbindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_mongodbbindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_mysqlbindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_perconaxtradbbindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_pgbouncerbindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_postgresbindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_proxysqlbindings.yaml \
-    --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.kubeware.dev_redisbindings.yaml \
-    --out=./charts/catalog-manager/crds
+    --input=https://github.com/kompute/machine-operator/raw/${KOMPUTE_MACHINE_OPERATOR_TAG}/config/crd/bases/dockermachine.kompute.dev_drivers.yaml \
+    --input=https://github.com/kompute/machine-operator/raw/${KOMPUTE_MACHINE_OPERATOR_TAG}/config/crd/bases/dockermachine.kompute.dev_machines.yaml \
+    --out=./charts/dockermachine-operator/crds

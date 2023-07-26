@@ -1,8 +1,8 @@
 [![Twitter](https://img.shields.io/twitter/follow/appscodehq.svg?style=social&logo=twitter&label=Follow)](https://twitter.com/intent/follow?screen_name=AppsCodeHQ)
 
-# Kubeware installer
+# Kompute installer
 
-Kubeware Helm charts
+Kompute Helm charts
 
 ## Support
 

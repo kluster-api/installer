@@ -17,7 +17,7 @@ limitations under the License.
 package install
 
 import (
-	"go.kubeware.dev/installer/apis/installer/v1alpha1"
+	"go.kompute.dev/installer/apis/installer/v1alpha1"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
