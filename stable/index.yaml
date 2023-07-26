@@ -3,9 +3,9 @@ entries:
   dockermachine-operator:
   - apiVersion: v2
     appVersion: v0.0.1
-    created: "2023-07-26T09:40:55.114735-07:00"
+    created: "2023-07-26T16:42:26.43669886Z"
     description: A Helm chart for Appcatalog Operator by AppsCode
-    digest: dfec80e0332cd41ab9f3aea88e6ec4c13232922c21d64c3ac4a572df227fd9f6
+    digest: b59d5f09ecdb60dad599f7f5d7dd5c398f10f7c2a197448683aa757b75d20bae
     home: https://github.com/kompute/machine-operator
     icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
     maintainers:
@@ -18,4 +18,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/kompute/installer/master/stable/dockermachine-operator/dockermachine-operator-v2023.03.23.tgz
     version: v2023.03.23
-generated: "2023-07-26T09:40:55.112961-07:00"
+generated: "2023-07-26T16:42:26.435689188Z"
