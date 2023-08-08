@@ -72,10 +72,3 @@ monitoring:
     # Only usable when monitoring agent is `prometheus.io/operator`.
     labels: {}
 
-vaultServer:
-  name: ""
-  namespace: ""
-
-secretReaderServiceAccount:
-  name: ""
-  namespace: ""
