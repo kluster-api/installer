@@ -38,6 +38,11 @@ spec:
             - name: http
               containerPort: 8081
               protocol: TCP
+          volumeMounts:
+            - mountPath: /tmp
+              name: tmpdir
+            - mountPath: /.docker
+              name: dockerdir
           livenessProbe:
             httpGet:
               path: /healthz
@@ -48,6 +53,11 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.image.resources | nindent 12 }}
+      volumes:
+      - name: tmpdir
+        emptyDir: {}
+      - name: dockerdir
+        emptyDir: {}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

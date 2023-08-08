@@ -9,3 +9,8 @@ rules:
   - docker-machine.klusters.dev
   resources: ["*"]
   verbs: ["get", "list", "watch", "patch"]
+- apiGroups:
+    - ""
+  resources:
+    - secrets
+  verbs: ["create", "delete", "get", "patch", "list", "watch"]
