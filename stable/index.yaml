@@ -1,21 +1,21 @@
 apiVersion: v1
 entries:
-  dockermachine-operator:
+  docker-machine-operator:
   - apiVersion: v2
     appVersion: v0.0.1
-    created: "2023-07-26T09:40:55.114735-07:00"
-    description: A Helm chart for Appcatalog Operator by AppsCode
-    digest: dfec80e0332cd41ab9f3aea88e6ec4c13232922c21d64c3ac4a572df227fd9f6
-    home: https://github.com/cluster-api/machine-operator
+    created: "2023-09-01T00:00:03.975352-07:00"
+    description: A Helm chart for Docker Machine Operator by AppsCode
+    digest: 33dfde65a9b936ee832728b7780d8ef0870d251f2bf509405c7adf4891289f2c
+    home: https://github.com/cluster-api/docker-machine-operator
     icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
     maintainers:
     - email: support@appscode.com
       name: appscode
-    name: dockermachine-operator
+    name: docker-machine-operator
     sources:
-    - https://github.com/cluster-api/machine-operator
+    - https://github.com/cluster-api/docker-machine-operator
     type: application
     urls:
-    - https://raw.githubusercontent.com/cluster-api/installer/master/stable/dockermachine-operator/dockermachine-operator-v2023.03.23.tgz
-    version: v2023.03.23
-generated: "2023-07-26T09:40:55.112961-07:00"
+    - https://raw.githubusercontent.com/cluster-api/installer/master/stable/docker-machine-operator/docker-machine-operator-v2023.9.1.tgz
+    version: v2023.9.1
+generated: "2023-09-01T00:00:03.974239-07:00"
