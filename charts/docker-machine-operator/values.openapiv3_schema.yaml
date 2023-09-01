@@ -562,16 +562,6 @@ properties:
     type: string
   replicaCount:
     type: integer
-  secretReaderServiceAccount:
-    properties:
-      name:
-        type: string
-      namespace:
-        type: string
-    required:
-    - name
-    - namespace
-    type: object
   serviceAccount:
     properties:
       annotations:
@@ -601,16 +591,6 @@ properties:
           type: string
       type: object
     type: array
-  vaultServer:
-    properties:
-      name:
-        type: string
-      namespace:
-        type: string
-    required:
-    - name
-    - namespace
-    type: object
 required:
 - image
 - imagePullPolicy
