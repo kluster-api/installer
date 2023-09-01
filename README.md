@@ -1,8 +1,8 @@
 [![Twitter](https://img.shields.io/twitter/follow/appscodehq.svg?style=social&logo=twitter&label=Follow)](https://twitter.com/intent/follow?screen_name=AppsCodeHQ)
 
-# Kompute installer
+# Kluster API installer
 
-Kompute Helm charts
+Kluster API Helm charts
 
 ## Support
 
