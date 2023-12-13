@@ -1,7 +1,7 @@
 project:
   name: Docker Machiner Operator by AppsCode
   shortName: Docker Machiner Operator
-  url: https://github.com/cluster-api/docker-machine-operator
+  url: https://github.com/kluster-api/docker-machine-operator
   description: Docker Machiner Operator for Kubernetes
   app: a Docker Machiner Operator
 repository:

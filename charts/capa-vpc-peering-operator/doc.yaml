@@ -1,7 +1,7 @@
 project:
   name: CAPA VPC Peering Operator by AppsCode
   shortName: capa-vpc-peering-operator
-  url: https://github.com/bytebuilders/capa-vpc-peering-operator
+  url: https://github.com/kluster-api/capa-vpc-peering-operator
   description: CAPA VPC Peering Operator for Kubernetes
   app: an CAPA VPC Peering Operator
 repository:

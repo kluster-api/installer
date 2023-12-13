@@ -1,6 +1,6 @@
 # Docker Machiner Operator
 
-[Docker Machiner Operator by AppsCode](https://github.com/cluster-api/docker-machine-operator) - Docker Machiner Operator for Kubernetes
+[Docker Machiner Operator by AppsCode](https://github.com/kluster-api/docker-machine-operator) - Docker Machiner Operator for Kubernetes
 
 ## TL;DR;
 

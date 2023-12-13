@@ -4,10 +4,10 @@ description: A Helm chart for Docker Machine Operator by AppsCode
 type: application
 version: v2023.10.18
 appVersion: v0.0.2
-home: https://github.com/cluster-api/docker-machine-operator
+home: https://github.com/kluster-api/docker-machine-operator
 icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
 sources:
-- https://github.com/cluster-api/docker-machine-operator
+- https://github.com/kluster-api/docker-machine-operator
 maintainers:
 - name: appscode
   email: support@appscode.com
