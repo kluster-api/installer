@@ -11,12 +11,12 @@ rules:
   - awsmanagedcontrolplanes
   verbs: ["get", "list", "watch"]
 - apiGroups:
-  - ec2.aws.kubeform.com
+  - ec2.aws.kubedb.com
   resources:
   - vpcpeeringconnections
   verbs: ["get", "list", "watch"]
 - apiGroups:
-  - ec2.aws.kubeform.com
+  - ec2.aws.kubedb.com
   resources:
   - routes
   - securitygrouprules
