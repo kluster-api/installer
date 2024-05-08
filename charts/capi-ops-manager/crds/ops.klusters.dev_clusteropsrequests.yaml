@@ -1,20 +1,20 @@
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
-  name: drivers.docker-machine.klusters.dev
+  name: clusteropsrequests.ops.klusters.dev
 spec:
-  group: docker-machine.klusters.dev
+  group: ops.klusters.dev
   names:
-    kind: Driver
-    listKind: DriverList
-    plural: drivers
-    singular: driver
+    kind: ClusterOpsRequest
+    listKind: ClusterOpsRequestList
+    plural: clusteropsrequests
+    singular: clusteropsrequest
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Driver is the Schema for the drivers API
+        description: ClusterOpsRequest is the Schema for the clusteropsrequests API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -29,17 +29,15 @@ spec:
           metadata:
             type: object
           spec:
-            description: DriverSpec defines the desired state of Driver
+            description: ClusterOpsRequestSpec defines the desired state of ClusterOpsRequest
             properties:
-              builtin:
-                type: boolean
-              downloadURL:
+              foo:
+                description: Foo is an example field of ClusterOpsRequest. Edit clusteropsrequest_types.go
+                  to remove/update
                 type: string
-            required:
-            - builtin
             type: object
           status:
-            description: DriverStatus defines the observed state of Driver
+            description: ClusterOpsRequestStatus defines the observed state of ClusterOpsRequest
             type: object
         type: object
     served: true

@@ -1,0 +1,100 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: capiversions.catalog.klusters.dev
+spec:
+  group: catalog.klusters.dev
+  names:
+    kind: CapiVersion
+    listKind: CapiVersionList
+    plural: capiversions
+    singular: capiversion
+  scope: Cluster
+  versions:
+  - name: v1alpha1
+    schema:
+      openAPIV3Schema:
+        description: CapiVersion is the Schema for the capiversions API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: CapiVersionSpec defines the desired state of CapiVersion
+            properties:
+              capa:
+                properties:
+                  capi:
+                    type: string
+                  clusterawsadm:
+                    type: string
+                  clusterctl:
+                    type: string
+                  iamAuthenticator:
+                    type: string
+                  infrastructure:
+                    type: string
+                  kind:
+                    type: string
+                required:
+                - capi
+                - clusterawsadm
+                - clusterctl
+                - iamAuthenticator
+                - infrastructure
+                - kind
+                type: object
+              capg:
+                properties:
+                  capi:
+                    type: string
+                  clusterctl:
+                    type: string
+                  infrastructure:
+                    type: string
+                  kind:
+                    type: string
+                required:
+                - capi
+                - clusterctl
+                - infrastructure
+                - kind
+                type: object
+              capz:
+                properties:
+                  capi:
+                    type: string
+                  clusterctl:
+                    type: string
+                  infrastructure:
+                    type: string
+                  kind:
+                    type: string
+                required:
+                - capi
+                - clusterctl
+                - infrastructure
+                - kind
+                type: object
+            required:
+            - capa
+            - capg
+            - capz
+            type: object
+          status:
+            description: CapiVersionStatus defines the observed state of CapiVersion
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

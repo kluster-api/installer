@@ -1,0 +1,24 @@
+apiVersion: catalog.klusters.dev/v1alpha1
+kind: CapiVersion
+metadata:
+  name: "1.28"
+  labels:
+    {{- include "capi-catalog.labels" . | nindent 4 }}
+spec:
+  capa:
+    kind: "0.22"
+    clusterctl: "v1.6.3"
+    capi: "v1.6.3"
+    infrastructure: "v2.4.2"
+    clusterawsadm: "v2.4.2"
+    iamAuthenticator: "0.6.14"
+  capg:
+    kind: "0.22"
+    clusterctl: "v1.6.3"
+    capi: "v1.6.3"
+    infrastructure: "v2.4.2"
+  capz:
+    kind: "0.22"
+    clusterctl: "v1.6.3"
+    capi: "v1.6.3"
+    infrastructure: "v2.4.2"

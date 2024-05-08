@@ -1,0 +1,3 @@
+List all versions using the following command:
+
+  kubectl get capiversions.catalog.klusters.dev
