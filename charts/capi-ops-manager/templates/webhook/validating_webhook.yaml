@@ -1,0 +1,30 @@
+{{- if .Values.apiserver.enableValidatingWebhook }}
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: {{ include "capi-ops-manager.fullname" . }}
+  labels:
+    {{- include "capi-ops-manager.labels" . | nindent 4 }}
+webhooks:
+  - admissionReviewVersions:
+      - v1
+    clientConfig:
+      service:
+        name: {{ include "capi-ops-manager.webhookServiceName" . }}
+        namespace: {{ .Release.Namespace }}
+        path: /validate-apps-k8s-appscode-com-v1-capi-ops-manager
+      caBundle: {{ b64enc .Values.apiserver.ca }}
+    failurePolicy: Fail
+    name: capi-ops-managers.ops.klusters.dev
+    rules:
+      - apiGroups:
+          - ops.klusters.dev
+        apiVersions:
+          - v1
+        operations:
+          - CREATE
+          - UPDATE
+        resources:
+          - capi-ops-managers
+    sideEffects: None
+{{ end }}

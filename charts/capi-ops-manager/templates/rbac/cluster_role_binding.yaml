@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "capi-ops-manager.fullname" . }}
+  labels:
+    {{- include "capi-ops-manager.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "capi-ops-manager.fullname" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "capi-ops-manager.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
