@@ -8,7 +8,7 @@
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
 $ helm search repo appscode/capi-ops-manager --version=v2024.5.8
-$ helm upgrade -i capi-ops-manager appscode/capi-ops-manager -n monitoring --create-namespace --version=v2024.5.8
+$ helm upgrade -i capi-ops-manager appscode/capi-ops-manager -n kubeops --create-namespace --version=v2024.5.8
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys Inbox Agent on a [Kubernetes](http://kubernetes.io) cluster u
 To install/upgrade the chart with the release name `capi-ops-manager`:
 
 ```bash
-$ helm upgrade -i capi-ops-manager appscode/capi-ops-manager -n monitoring --create-namespace --version=v2024.5.8
+$ helm upgrade -i capi-ops-manager appscode/capi-ops-manager -n kubeops --create-namespace --version=v2024.5.8
 ```
 
 The command deploys Inbox Agent on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -36,7 +36,7 @@ The command deploys Inbox Agent on the Kubernetes cluster in the default configu
 To uninstall the `capi-ops-manager`:
 
 ```bash
-$ helm uninstall capi-ops-manager -n monitoring
+$ helm uninstall capi-ops-manager -n kubeops
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
@@ -94,12 +94,12 @@ The following table lists the configurable parameters of the `capi-ops-manager` 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i capi-ops-manager appscode/capi-ops-manager -n monitoring --create-namespace --version=v2024.5.8 --set replicaCount=1
+$ helm upgrade -i capi-ops-manager appscode/capi-ops-manager -n kubeops --create-namespace --version=v2024.5.8 --set replicaCount=1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i capi-ops-manager appscode/capi-ops-manager -n monitoring --create-namespace --version=v2024.5.8 --values values.yaml
+$ helm upgrade -i capi-ops-manager appscode/capi-ops-manager -n kubeops --create-namespace --version=v2024.5.8 --values values.yaml
 ```
