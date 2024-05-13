@@ -1,7 +1,7 @@
 apiVersion: v2
-description: Inbox Agent by AppsCode
+description: CAPI Ops Manager by AppsCode
 name: capi-ops-manager
-version: v2024.5.8
+version: v2024.5.14
 appVersion: v0.0.1
 home: https://github.com/ops-center
 icon: https://cdn.appscode.com/images/products/searchlight/searchlight-512x512.png

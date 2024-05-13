@@ -1,19 +1,19 @@
-# Inbox Agent
+# CAPI catalog
 
-[Inbox Agent by AppsCode](https://github.com/ops-center/capi-ops-manager) - Inbox Agent by AppsCode
+[CAPI catalog by AppsCode](https://github.com/ops-center/capi-ops-manager) - CAPI catalog by AppsCode
 
 ## TL;DR;
 
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/capi-catalog --version=0.1.0
-$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=0.1.0
+$ helm search repo appscode/capi-catalog --version=v2024.5.14
+$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.5.14
 ```
 
 ## Introduction
 
-This chart deploys Inbox Agent on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart deploys CAPI catalog on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
@@ -24,10 +24,10 @@ This chart deploys Inbox Agent on a [Kubernetes](http://kubernetes.io) cluster u
 To install/upgrade the chart with the release name `capi-catalog`:
 
 ```bash
-$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=0.1.0
+$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.5.14
 ```
 
-The command deploys Inbox Agent on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+The command deploys CAPI catalog on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 
@@ -54,12 +54,12 @@ The following table lists the configurable parameters of the `capi-catalog` char
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=0.1.0 --set -- generate from values file --
+$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.5.14 --set -- generate from values file --
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=0.1.0 --values values.yaml
+$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.5.14 --values values.yaml
 ```

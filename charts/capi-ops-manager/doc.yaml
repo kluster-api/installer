@@ -1,9 +1,9 @@
 project:
-  name: Inbox Agent by AppsCode
-  shortName: Inbox Agent
+  name: CAPI Ops Manager by AppsCode
+  shortName: CAPI Ops Manager
   url: https://github.com/ops-center/capi-ops-manager
-  description: Inbox Agent by AppsCode
-  app: Inbox Agent
+  description: CAPI Ops Manager by AppsCode
+  app: CAPI Ops Manager
 repository:
   url: https://charts.appscode.com/stable/
   name: appscode
