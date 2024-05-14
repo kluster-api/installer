@@ -18,10 +18,10 @@ spec:
     kind_image: "v1.28.7"
     clusterctl: "v1.6.3"
     capi: "v1.6.3"
-    infrastructure: "v2.4.2"
+    infrastructure: "v1.6.0"
   capz:
     kind: "v0.22.0"
     kind_image: "v1.28.7"
     clusterctl: "v1.6.3"
     capi: "v1.6.3"
-    infrastructure: "v2.4.2"
+    infrastructure: "v1.14.2"
