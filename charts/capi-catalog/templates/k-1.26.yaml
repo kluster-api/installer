@@ -1,7 +1,7 @@
 apiVersion: catalog.klusters.dev/v1alpha1
 kind: CapiVersion
 metadata:
-  name: "1.29"
+  name: "1.26"
   labels:
     {{- include "capi-catalog.labels" . | nindent 4 }}
 spec:
