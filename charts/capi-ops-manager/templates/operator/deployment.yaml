@@ -50,8 +50,22 @@ spec:
     spec:
       {{- include "appscode.imagePullSecrets" . | nindent 6 }}
       serviceAccountName: {{ include "capi-ops-manager.serviceAccountName" . }}
+      volumes:
+      - name: temp-dir
+        emptyDir: {}
+      - name: etc-xdg
+        emptyDir: {}
+      - name: config
+        emptyDir: {}
       containers:
       - name: operator
+        volumeMounts:
+          - mountPath: /tmp
+            name: temp-dir
+          - mountPath: /etc/xdg
+            name: etc-xdg
+          - mountPath: /.config
+            name: config
         image: "{{ include "operator.registry" . }}/{{ .Values.operator.repository }}:{{ .Values.operator.tag | default .Chart.AppVersion }}"
         imagePullPolicy: {{ .Values.imagePullPolicy }}
         securityContext:
