@@ -12,7 +12,7 @@ webhooks:
       service:
         name: {{ include "capi-ops-manager.webhookServiceName" . }}
         namespace: {{ .Release.Namespace }}
-        path: /mutate-apps-k8s-appscode-com-v1-capi-ops-manager
+        path: /mutate-ops-klusters-dev-v1alpha1-clusteropsrequest
       caBundle: {{ b64enc .Values.apiserver.ca }}
     failurePolicy: Fail
     name: capi-ops-managers.ops.klusters.dev
@@ -20,11 +20,11 @@ webhooks:
       - apiGroups:
           - ops.klusters.dev
         apiVersions:
-          - v1
+          - v1alpha1
         operations:
           - CREATE
           - UPDATE
         resources:
-          - capi-ops-managers
+          - clusteropsrequests
     sideEffects: None
 {{ end }}
