@@ -7,21 +7,29 @@ metadata:
 spec:
   capa:
     kind: "v0.22.0"
-    kind_image: "v1.28.7"
+    kindImage: "v1.28.7"
     clusterctl: "v1.6.3"
     capi: "v1.6.3"
     infrastructure: "v2.4.2"
     clusterawsadm: "v2.4.2"
     iamAuthenticator: "0.6.14"
+    dockerMachine:
+      type: "t2.xlarge"
   capg:
     kind: "v0.22.0"
-    kind_image: "v1.28.7"
+    kindImage: "v1.28.7"
     clusterctl: "v1.6.3"
     capi: "v1.6.3"
     infrastructure: "v1.6.0"
+    dockerMachine:
+      type: "n1-standard-2"
+      os: "ubuntu-os-cloud/global/images/ubuntu-2204-jammy-v20230714"
   capz:
     kind: "v0.22.0"
-    kind_image: "v1.28.7"
+    kindImage: "v1.28.7"
     clusterctl: "v1.6.3"
     capi: "v1.6.3"
     infrastructure: "v1.14.2"
+    dockerMachine:
+      type: "Standard_D2s_v3"
+      os: "Canonical:0001-com-ubuntu-server-jammy:22_04-lts:22.04.202204200"
