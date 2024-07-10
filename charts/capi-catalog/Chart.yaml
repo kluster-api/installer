@@ -1,7 +1,7 @@
 apiVersion: v2
 description: CAPI catalog by AppsCode
 name: capi-catalog
-version: v2024.5.14
+version: v2024.7.9
 appVersion: v0.0.1
 home: https://github.com/ops-center
 icon: https://cdn.appscode.com/images/products/searchlight/searchlight-512x512.png
