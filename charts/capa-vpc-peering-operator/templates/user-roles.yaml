@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: appscode:capi-ops-manager:admin
+  name: appscode:capa-vpc-peering:admin
   labels:
     rbac.authorization.k8s.io/aggregate-to-admin: "true"
   annotations:
@@ -9,16 +9,21 @@ metadata:
     "helm.sh/hook-delete-policy": before-hook-creation
 rules:
 - apiGroups:
-  - catalog.klusters.dev
-  - ops.klusters.dev
+  - ec2.aws.kubedb.com
   resources:
-  - "*"
+  - vpcpeeringconnections
+  verbs: ["*"]
+- apiGroups:
+  - ec2.aws.kubedb.com
+  resources:
+  - routes
+  - securitygrouprules
   verbs: ["*"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: appscode:capi-ops-manager:edit
+  name: appscode:capa-vpc-peering:edit
   labels:
     rbac.authorization.k8s.io/aggregate-to-edit: "true"
   annotations:
@@ -26,15 +31,21 @@ metadata:
     "helm.sh/hook-delete-policy": before-hook-creation
 rules:
 - apiGroups:
-  - ops.klusters.dev
+  - ec2.aws.kubedb.com
   resources:
-  - "*"
+  - vpcpeeringconnections
+  verbs: ["create", "delete", "deletecollection", "patch", "update"]
+- apiGroups:
+  - ec2.aws.kubedb.com
+  resources:
+  - routes
+  - securitygrouprules
   verbs: ["create", "delete", "deletecollection", "patch", "update"]
 ---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: appscode:capi-ops-manager:view
+  name: appscode:capa-vpc-peering:view
   labels:
     rbac.authorization.k8s.io/aggregate-to-view: "true"
   annotations:
@@ -42,8 +53,13 @@ metadata:
     "helm.sh/hook-delete-policy": before-hook-creation
 rules:
 - apiGroups:
-  - catalog.klusters.dev
-  - ops.klusters.dev
+  - ec2.aws.kubedb.com
   resources:
-  - "*"
+  - vpcpeeringconnections
+  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - ec2.aws.kubedb.com
+  resources:
+  - routes
+  - securitygrouprules
   verbs: ["get", "list", "watch"]
