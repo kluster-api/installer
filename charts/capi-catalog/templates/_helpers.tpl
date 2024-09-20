@@ -52,3 +52,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- toYaml . | nindent 0 }}
 {{- end -}}
 {{- end -}}
+
+{{- define "image.ghcr" -}}
+{{ list .Values.proxies.ghcr ._repo | compact | join "/" }}
+{{- end }}

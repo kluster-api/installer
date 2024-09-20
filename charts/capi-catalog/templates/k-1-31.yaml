@@ -1,0 +1,16 @@
+apiVersion: catalog.klusters.dev/v1alpha1
+kind: CapiVersion
+metadata:
+  name: "1.31"
+  labels:
+    {{- include "capi-catalog.labels" . | nindent 4 }}
+spec:
+  capa:
+    deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capa-deployer") $) }}:v1.31'
+    ebsCSIDriverVersion: "v1.31.0-eksbuild.1"
+  capg:
+    deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capg-deployer") $) }}:v1.31'
+  capz:
+    deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capz-deployer") $) }}:v1.31'
+  caph:
+    deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/caph-deployer") $) }}:v1.31'
