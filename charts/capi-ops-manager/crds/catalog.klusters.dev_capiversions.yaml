@@ -36,8 +36,11 @@ spec:
                 properties:
                   deployerImage:
                     type: string
+                  ebsCSIDriverVersion:
+                    type: string
                 required:
                 - deployerImage
+                - ebsCSIDriverVersion
                 type: object
               capg:
                 properties:

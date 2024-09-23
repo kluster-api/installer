@@ -45,16 +45,22 @@ The command removes all the Kubernetes components associated with the chart and 
 
 The following table lists the configurable parameters of the `capi-catalog` chart and their default values.
 
-|    Parameter     | Description |     Default     |
-|------------------|-------------|-----------------|
-| nameOverride     |             | <code>""</code> |
-| fullnameOverride |             | <code>""</code> |
+|       Parameter       | Description |            Default             |
+|-----------------------|-------------|--------------------------------|
+| nameOverride          |             | <code>""</code>                |
+| fullnameOverride      |             | <code>""</code>                |
+| proxies.dockerHub     |             | <code>""</code>                |
+| proxies.dockerLibrary |             | <code>""</code>                |
+| proxies.ghcr          |             | <code>ghcr.io</code>           |
+| proxies.kubernetes    |             | <code>registry.k8s.io</code>   |
+| proxies.microsoft     |             | <code>mcr.microsoft.com</code> |
+| proxies.appscode      |             | <code>r.appscode.com</code>    |
 
 
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.7.9 --set -- generate from values file --
+$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.7.9 --set proxies.ghcr=ghcr.io
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
