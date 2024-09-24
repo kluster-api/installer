@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/capi-catalog --version=v2024.7.9
-$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.7.9
+$ helm search repo appscode/capi-catalog --version=v2024.9.24
+$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.9.24
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys CAPI catalog on a [Kubernetes](http://kubernetes.io) cluster 
 To install/upgrade the chart with the release name `capi-catalog`:
 
 ```bash
-$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.7.9
+$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.9.24
 ```
 
 The command deploys CAPI catalog on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -60,12 +60,12 @@ The following table lists the configurable parameters of the `capi-catalog` char
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.7.9 --set proxies.ghcr=ghcr.io
+$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.9.24 --set proxies.ghcr=ghcr.io
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.7.9 --values values.yaml
+$ helm upgrade -i capi-catalog appscode/capi-catalog -n kubeops --create-namespace --version=v2024.9.24 --values values.yaml
 ```

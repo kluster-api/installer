@@ -3,10 +3,10 @@ description: CAPI Ops Manager by AppsCode
 name: capi-ops-manager
 version: v2024.8.14
 appVersion: v0.0.2
-home: https://github.com/ops-center
+home: https://appscode.com
 icon: https://cdn.appscode.com/images/products/searchlight/searchlight-512x512.png
 sources:
-- https://github.com/ops-center
+- https://github.com/kluster-api
 maintainers:
 - name: appscode
   email: support@appscode.com
