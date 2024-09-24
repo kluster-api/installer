@@ -33,91 +33,39 @@ spec:
             properties:
               capa:
                 properties:
-                  capi:
+                  deployerImage:
                     type: string
-                  clusterawsadm:
-                    type: string
-                  clusterctl:
-                    type: string
-                  dockerMachine:
-                    properties:
-                      os:
-                        type: string
-                      type:
-                        type: string
-                    type: object
-                  iamAuthenticator:
-                    type: string
-                  infrastructure:
-                    type: string
-                  kind:
-                    type: string
-                  kindImage:
+                  ebsCSIDriverVersion:
                     type: string
                 required:
-                - capi
-                - clusterawsadm
-                - clusterctl
-                - iamAuthenticator
-                - infrastructure
-                - kind
-                - kindImage
+                - deployerImage
+                - ebsCSIDriverVersion
                 type: object
               capg:
                 properties:
-                  capi:
-                    type: string
-                  clusterctl:
-                    type: string
-                  dockerMachine:
-                    properties:
-                      os:
-                        type: string
-                      type:
-                        type: string
-                    type: object
-                  infrastructure:
-                    type: string
-                  kind:
-                    type: string
-                  kindImage:
+                  deployerImage:
                     type: string
                 required:
-                - capi
-                - clusterctl
-                - infrastructure
-                - kind
-                - kindImage
+                - deployerImage
+                type: object
+              caph:
+                properties:
+                  deployerImage:
+                    type: string
+                required:
+                - deployerImage
                 type: object
               capz:
                 properties:
-                  capi:
-                    type: string
-                  clusterctl:
-                    type: string
-                  dockerMachine:
-                    properties:
-                      os:
-                        type: string
-                      type:
-                        type: string
-                    type: object
-                  infrastructure:
-                    type: string
-                  kind:
-                    type: string
-                  kindImage:
+                  deployerImage:
                     type: string
                 required:
-                - capi
-                - clusterctl
-                - infrastructure
-                - kind
-                - kindImage
+                - deployerImage
                 type: object
             required:
             - capa
             - capg
+            - caph
             - capz
             type: object
           status:
