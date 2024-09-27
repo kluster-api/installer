@@ -33,34 +33,58 @@ spec:
             properties:
               capa:
                 properties:
+                  certManagerVersion:
+                    type: string
                   deployerImage:
                     type: string
                   ebsCSIDriverVersion:
                     type: string
+                  gatewayAPIVersion:
+                    type: string
                 required:
+                - certManagerVersion
                 - deployerImage
                 - ebsCSIDriverVersion
+                - gatewayAPIVersion
                 type: object
               capg:
                 properties:
+                  certManagerVersion:
+                    type: string
                   deployerImage:
                     type: string
+                  gatewayAPIVersion:
+                    type: string
                 required:
+                - certManagerVersion
                 - deployerImage
+                - gatewayAPIVersion
                 type: object
               caph:
                 properties:
+                  certManagerVersion:
+                    type: string
                   deployerImage:
                     type: string
+                  gatewayAPIVersion:
+                    type: string
                 required:
+                - certManagerVersion
                 - deployerImage
+                - gatewayAPIVersion
                 type: object
               capz:
                 properties:
+                  certManagerVersion:
+                    type: string
                   deployerImage:
                     type: string
+                  gatewayAPIVersion:
+                    type: string
                 required:
+                - certManagerVersion
                 - deployerImage
+                - gatewayAPIVersion
                 type: object
             required:
             - capa
