@@ -8,9 +8,17 @@ spec:
   capa:
     deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capa-deployer") $) }}:v1.27'
     ebsCSIDriverVersion: "v1.27.0-eksbuild.1"
+    certManagerVersion: "v1.15.3"
+    gatewayAPIVersion: "v1.0.0"
   capg:
     deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capg-deployer") $) }}:v1.27'
+    certManagerVersion: "v1.15.3"
+    gatewayAPIVersion: "v1.0.0"
   capz:
     deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capz-deployer") $) }}:v1.27'
+    certManagerVersion: "v1.15.3"
+    gatewayAPIVersion: "v1.0.0"
   caph:
     deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/caph-deployer") $) }}:v1.27'
+    certManagerVersion: "v1.15.3"
+    gatewayAPIVersion: "v1.0.0"
