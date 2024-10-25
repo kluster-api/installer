@@ -14,13 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-KLUSTER_API_DOCKER_MACHINE_OPERATOR_TAG=${KLUSTER_API_DOCKER_MACHINE_OPERATOR_TAG:-master}
 KLUSTER_API_CAPI_OPS_MANAGER_TAG=${KLUSTER_API_CAPI_OPS_MANAGER_TAG:-master}
-
-crd-importer \
-    --input=https://github.com/kluster-api/docker-machine-operator/raw/${KLUSTER_API_DOCKER_MACHINE_OPERATOR_TAG}/crds/docker-machine.klusters.dev_drivers.yaml \
-    --input=https://github.com/kluster-api/docker-machine-operator/raw/${KLUSTER_API_DOCKER_MACHINE_OPERATOR_TAG}/crds/docker-machine.klusters.dev_machines.yaml \
-    --out=./charts/docker-machine-operator/crds
 
 crd-importer \
     --input=https://github.com/kluster-api/capi-ops-manager/raw/${KLUSTER_API_CAPI_OPS_MANAGER_TAG}/crds/catalog.klusters.dev_capiversions.yaml \

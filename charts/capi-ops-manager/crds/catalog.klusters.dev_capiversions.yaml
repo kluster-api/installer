@@ -33,6 +33,8 @@ spec:
             properties:
               capa:
                 properties:
+                  capiVersion:
+                    type: string
                   certManagerVersion:
                     type: string
                   deployerImage:
@@ -41,50 +43,72 @@ spec:
                     type: string
                   gatewayAPIVersion:
                     type: string
+                  infrastructureVersion:
+                    type: string
                 required:
+                - capiVersion
                 - certManagerVersion
                 - deployerImage
                 - ebsCSIDriverVersion
                 - gatewayAPIVersion
+                - infrastructureVersion
                 type: object
               capg:
                 properties:
+                  capiVersion:
+                    type: string
                   certManagerVersion:
                     type: string
                   deployerImage:
                     type: string
                   gatewayAPIVersion:
                     type: string
+                  infrastructureVersion:
+                    type: string
                 required:
+                - capiVersion
                 - certManagerVersion
                 - deployerImage
                 - gatewayAPIVersion
+                - infrastructureVersion
                 type: object
               caph:
                 properties:
+                  capiVersion:
+                    type: string
                   certManagerVersion:
                     type: string
                   deployerImage:
                     type: string
                   gatewayAPIVersion:
                     type: string
+                  infrastructureVersion:
+                    type: string
                 required:
+                - capiVersion
                 - certManagerVersion
                 - deployerImage
                 - gatewayAPIVersion
+                - infrastructureVersion
                 type: object
               capz:
                 properties:
+                  capiVersion:
+                    type: string
                   certManagerVersion:
                     type: string
                   deployerImage:
                     type: string
                   gatewayAPIVersion:
                     type: string
+                  infrastructureVersion:
+                    type: string
                 required:
+                - capiVersion
                 - certManagerVersion
                 - deployerImage
                 - gatewayAPIVersion
+                - infrastructureVersion
                 type: object
             required:
             - capa

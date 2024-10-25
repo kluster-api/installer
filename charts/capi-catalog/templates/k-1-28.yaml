@@ -10,15 +10,23 @@ spec:
     ebsCSIDriverVersion: "v1.28.0-eksbuild.1"
     certManagerVersion: "v1.15.3"
     gatewayAPIVersion: "v1.0.0"
+    capiVersion: "v1.7.4"
+    infrastructureVersion: "v2.6.1"
   capg:
     deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capg-deployer") $) }}:v1.28'
     certManagerVersion: "v1.15.3"
     gatewayAPIVersion: "v1.0.0"
+    capiVersion: "v1.7.3"
+    infrastructureVersion: "v1.7.0"
   capz:
     deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capz-deployer") $) }}:v1.28'
     certManagerVersion: "v1.15.3"
     gatewayAPIVersion: "v1.0.0"
+    capiVersion: "v1.8.3"
+    infrastructureVersion: "v1.17.0"
   caph:
     deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/caph-deployer") $) }}:v1.28'
     certManagerVersion: "v1.15.3"
     gatewayAPIVersion: "v1.0.0"
+    capiVersion: "v1.7.4"
+    infrastructureVersion: "v1.0.0"
