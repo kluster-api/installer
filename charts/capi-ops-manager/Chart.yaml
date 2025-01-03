@@ -2,7 +2,7 @@ apiVersion: v2
 description: CAPI Ops Manager by AppsCode
 name: capi-ops-manager
 version: v2024.8.14
-appVersion: v0.0.2
+appVersion: v0.0.5
 home: https://appscode.com
 icon: https://cdn.appscode.com/images/products/searchlight/searchlight-512x512.png
 sources:
