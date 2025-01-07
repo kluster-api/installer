@@ -91,6 +91,25 @@ spec:
                 - gatewayAPIVersion
                 - infrastructureVersion
                 type: object
+              capk:
+                properties:
+                  capiVersion:
+                    type: string
+                  certManagerVersion:
+                    type: string
+                  deployerImage:
+                    type: string
+                  gatewayAPIVersion:
+                    type: string
+                  infrastructureVersion:
+                    type: string
+                required:
+                  - capiVersion
+                  - certManagerVersion
+                  - deployerImage
+                  - gatewayAPIVersion
+                  - infrastructureVersion
+                type: object
               capz:
                 properties:
                   capiVersion:
@@ -114,6 +133,7 @@ spec:
             - capa
             - capg
             - caph
+            - capk
             - capz
             type: object
           status:
