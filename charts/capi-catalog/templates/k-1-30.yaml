@@ -32,7 +32,7 @@ spec:
     infrastructureVersion: "v1.0.0"
   capk:
     deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capk-deployer") $) }}:v1.30'
-    certManagerVersion: "v1.15.3"
+    certManagerVersion: "v1.17.0"
     gatewayAPIVersion: "v1.0.0"
     capiVersion: "v1.7.4"
     infrastructureVersion: "v0.1.9"
