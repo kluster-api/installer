@@ -27,7 +27,9 @@ import (
 
 func TestDefaultValues(t *testing.T) {
 	checker := sc.New(os.DirFS("../../.."),
+		sc.TestCase{Obj: v1alpha1.AwsCredentialManagerSpec{}},
 		sc.TestCase{Obj: v1alpha1.CapaVpcPeeringOperatorSpec{}},
+		sc.TestCase{Obj: v1alpha1.CapiOpsManagerSpec{}},
 		sc.TestCase{Obj: v1alpha1.DockerMachineOperatorSpec{}},
 	)
 	checker.TestAll(t)
