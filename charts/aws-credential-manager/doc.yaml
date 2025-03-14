@@ -1,0 +1,18 @@
+project:
+  name: AWS Credential Manager by AppsCode
+  shortName: AWS Credential Manager
+  url: https://github.com/appscode-cloud
+  description: AWS Credential Manager
+  app: a AWS Credential Manager
+repository:
+  url: https://charts.appscode.com/stable
+  name: appscode
+chart:
+  name: aws-credential-manager
+  values: -- generate from values file --
+  valuesExample: -- generate from values file --
+prerequisites:
+- Kubernetes 1.29+
+release:
+  name: aws-credential-manager
+  namespace: kubeops
