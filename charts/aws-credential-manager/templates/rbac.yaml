@@ -46,12 +46,13 @@ metadata:
     {{- include "aws-credential-manager.labels" . | nindent 4 }}
 rules:
 - apiGroups:
-    - ""
+  - ""
   resources:
-    - configmaps
+  - configmaps
   verbs:
-    - list
-    - watch
+  - get
+  - list
+  - watch
 - apiGroups:
   - ""
   resources:

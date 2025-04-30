@@ -81,5 +81,3 @@ volumeMounts: []
 nodeSelector: {}
 tolerations: []
 affinity: {}
-args: # +doc-gen:break
-  - irsa

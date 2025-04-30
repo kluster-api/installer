@@ -82,7 +82,6 @@ type AwsCredentialManagerSpec struct {
 	ServiceAccount ServiceAccountSpec `json:"serviceAccount"`
 	Volumes        []core.Volume      `json:"volumes"`
 	VolumeMounts   []core.VolumeMount `json:"volumeMounts"`
-	Args           []string           `json:"args"`
 }
 
 type ImageReference struct {
