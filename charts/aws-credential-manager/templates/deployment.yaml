@@ -33,7 +33,7 @@ spec:
           image: "{{ include "image.registry" . }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            {{- toYaml .Values.args | nindent 12 }}
+            - run
             - --metrics-bind-address=:8443
             - --leader-elect=false
             - --health-probe-bind-address=:{{ .Values.service.port }}
