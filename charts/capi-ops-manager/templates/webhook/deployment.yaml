@@ -53,10 +53,15 @@ spec:
       serviceAccountName: {{ include "capi-ops-manager.serviceAccountName" . }}
       containers:
       - name: webhook-server
-        image: "{{ include "operator.registry" . }}/{{ .Values.operator.repository }}:{{ .Values.operator.tag | default .Chart.AppVersion }}"
+        image: {{ include "operator.registry" . }}/{{ .Values.operator.repository }}:{{ .Values.operator.tag | default .Chart.AppVersion }}{{ include "operator.ubi" . }}
         imagePullPolicy: {{ .Values.imagePullPolicy }}
+        {{- if eq "true" ( include "distro.openshift" . ) }}
+        securityContext:
+          {{- toYaml (omit .Values.operator.securityContext "runAsUser" "runAsGroup" "fsGroup" "supplementalGroups") | nindent 10 }}
+        {{- else }}
         securityContext:
           {{- toYaml .Values.operator.securityContext | nindent 10 }}
+        {{- end }}
         args:
           - webhook
           - --webhook-name={{ include "capi-ops-manager.fullname" . }}
@@ -94,9 +99,14 @@ spec:
           mountPath: /var/serving-cert
           readOnly: true
       - name: kube-rbac-proxy
-        image: "{{ include "rbacproxy.registry" . }}/{{ .Values.rbacproxy.repository }}:{{ .Values.rbacproxy.tag }}"
+        image: {{ include "rbacproxy.registry" . }}/{{ .Values.rbacproxy.repository }}:{{ .Values.rbacproxy.tag }}{{ include "operator.ubi" . }}
+        {{- if eq "true" ( include "distro.openshift" . ) }}
+        securityContext:
+          {{- toYaml (omit .Values.rbacproxy.securityContext "runAsUser" "runAsGroup" "fsGroup" "supplementalGroups") | nindent 10 }}
+        {{- else }}
         securityContext:
           {{- toYaml .Values.rbacproxy.securityContext | nindent 10 }}
+        {{- end }}
         args:
         - --secure-listen-address=0.0.0.0:8443
         - --upstream=http://127.0.0.1:8080/
@@ -113,8 +123,13 @@ spec:
         secret:
           defaultMode: 420
           secretName: {{ include "capi-ops-manager.fullname" . }}-webhook-cert
+      {{- if eq "true" ( include "distro.openshift" . ) }}
+      securityContext:
+        {{- toYaml (omit .Values.podSecurityContext "runAsUser" "runAsGroup" "fsGroup" "supplementalGroups") | nindent 8 }}
+      {{- else }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      {{- end }}
     {{- if or $tolerations $criticalAddon }}
       tolerations:
       {{- with $tolerations }}
