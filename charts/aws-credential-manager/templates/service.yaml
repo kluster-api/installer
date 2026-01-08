@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "aws-credential-manager.fullname" . }}-stats
+  name: {{ include "aws-credential-manager.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "aws-credential-manager.labels" . | nindent 4 }}
