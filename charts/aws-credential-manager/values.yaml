@@ -56,13 +56,15 @@ resources: {}
 livenessProbe:
   httpGet:
     path: /healthz
-    port: http
+    port: 8081
+    scheme: HTTP
   initialDelaySeconds: 15
   periodSeconds: 20
 readinessProbe:
   httpGet:
     path: /readyz
-    port: http
+    port: 8081
+    scheme: HTTP
   initialDelaySeconds: 5
   periodSeconds: 10
 # Additional volumes on the output Deployment definition.
@@ -124,5 +126,3 @@ apiserver:
     serverCrt: ""
     # Private key for the serving certificate used by webhook server.
     serverKey: ""
-  webhook:
-    failurePolicy: Ignore

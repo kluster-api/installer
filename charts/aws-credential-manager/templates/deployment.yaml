@@ -51,8 +51,8 @@ spec:
             - --aws-max-interval-seconds={{ .Values.bucketAccessor.awsMaxIntervalSeconds }}
             - --aws-max-wait-seconds={{ .Values.bucketAccessor.awsMaxWaitSeconds }}
           ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
+            - containerPort: 9443
+              name: webhook-server
               protocol: TCP
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}

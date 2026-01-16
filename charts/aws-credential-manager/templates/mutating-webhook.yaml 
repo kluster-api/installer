@@ -1,8 +1,9 @@
+{{ template "aws-credential-manager.prepare-certs" $ }}
 {{- if .Values.apiserver.enableMutatingWebhook }}
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
 metadata:
-  name: {{ template "aws-credential-manager.fullname" . }}
+  name: {{ include "aws-credential-manager.fullname" . }}
   labels:
     {{- include "aws-credential-manager.labels" . | nindent 4 }}
 webhooks:
@@ -25,7 +26,7 @@ webhooks:
     clientConfig:
       service:
         namespace: {{ .Release.Namespace }}
-        name: {{ include "aws-credential-manager.fullname" . }}
+        name: {{ include "aws-credential-manager.webhookServiceName" . }}
         path: /mutate-batch-v1-job
-      caBundle: {{ .Values.apiserver.ca | b64enc }}
+      caBundle: {{ $._caCrt }}
 {{- end }}
