@@ -85,6 +85,10 @@ type AwsCredentialManagerSpec struct {
 	VolumeMounts   []core.VolumeMount `json:"volumeMounts"`
 	// +optional
 	Distro shared.DistroSpec `json:"distro"`
+	// +optional
+	Apiserver AwsCredentialManagerApiserver `json:"apiserver"`
+	// +optional
+	BucketAccessor BucketAccessor `json:"bucketAccessor"`
 }
 
 type ImageReference struct {
@@ -97,6 +101,23 @@ type ImageReference struct {
 type ServiceSpec struct {
 	Type string `json:"type"`
 	Port int    `json:"port"`
+}
+
+type AwsCredentialManagerApiserver struct {
+	GroupPriorityMinimum        int             `json:"groupPriorityMinimum"`
+	VersionPriority             int             `json:"versionPriority"`
+	EnableMutatingWebhook       bool            `json:"enableMutatingWebhook"`
+	EnableValidatingWebhook     bool            `json:"enableValidatingWebhook"`
+	Ca                          string          `json:"ca"`
+	BypassValidatingWebhookXray bool            `json:"bypassValidatingWebhookXray"`
+	UseKubeapiserverFqdnForAks  bool            `json:"useKubeapiserverFqdnForAks"`
+	Healthcheck                 HealthcheckSpec `json:"healthcheck"`
+	ServingCerts                ServingCerts    `json:"servingCerts"`
+}
+
+type BucketAccessor struct {
+	AwsMaxIntervalSeconds string `json:"awsMaxIntervalSeconds"`
+	AwsMaxWaitSeconds     string `json:"awsMaxWaitSeconds"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

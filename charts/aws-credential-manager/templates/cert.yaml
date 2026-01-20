@@ -1,0 +1,16 @@
+{{ template "aws-credential-manager.prepare-certs" $ }}
+
+{{- if or .Values.apiserver.enableMutatingWebhook .Values.apiserver.enableValidatingWebhook }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "aws-credential-manager.fullname" . }}-apiserver-cert
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "aws-credential-manager.labels" . | nindent 4 }}
+type: Opaque
+data:
+  ca.crt: {{ $._caCrt }}
+  tls.crt: {{ $._serverCrt }}
+  tls.key: {{ $._serverKey }}
+{{- end }}

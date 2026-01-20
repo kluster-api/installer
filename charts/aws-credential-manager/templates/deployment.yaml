@@ -47,9 +47,12 @@ spec:
             - --metrics-bind-address=:8443
             - --leader-elect=false
             - --health-probe-bind-address=:{{ .Values.service.port }}
+            - --webhook-cert-path=/var/serving-cert
+            - --aws-max-interval-seconds={{ .Values.bucketAccessor.awsMaxIntervalSeconds }}
+            - --aws-max-wait-seconds={{ .Values.bucketAccessor.awsMaxWaitSeconds }}
           ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
+            - containerPort: 9443
+              name: webhook-server
               protocol: TCP
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
@@ -57,12 +60,18 @@ spec:
             {{- toYaml .Values.readinessProbe | nindent 12 }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.volumeMounts }}
           volumeMounts:
+            - mountPath: /var/serving-cert
+              name: serving-cert
+          {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
-      {{- with .Values.volumes }}
       volumes:
+      - name: serving-cert
+        secret:
+          defaultMode: 420
+          secretName: {{ include "aws-credential-manager.fullname" . }}-apiserver-cert
+      {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       {{- with .Values.nodeSelector }}

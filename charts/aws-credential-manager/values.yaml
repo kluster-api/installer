@@ -56,13 +56,15 @@ resources: {}
 livenessProbe:
   httpGet:
     path: /healthz
-    port: http
+    port: 8081
+    scheme: HTTP
   initialDelaySeconds: 15
   periodSeconds: 20
 readinessProbe:
   httpGet:
     path: /readyz
-    port: http
+    port: 8081
+    scheme: HTTP
   initialDelaySeconds: 5
   periodSeconds: 10
 # Additional volumes on the output Deployment definition.
@@ -87,3 +89,40 @@ distro:
   openshift: false
   # Set operator or all to use ubi images
   ubi: ""
+
+bucketAccessor:
+  awsMaxIntervalSeconds: "5"
+  awsMaxWaitSeconds: "300"
+
+apiserver:
+  # The minimum priority the webhook api group should have at least. Please see
+  # https://github.com/kubernetes/kube-aggregator/blob/release-1.9/pkg/apis/apiregistration/v1beta1/types.go#L58-L64
+  # for more information on proper values of this field.
+  groupPriorityMinimum: 10000
+  # The ordering of the webhook api inside of the group. Please see
+  # https://github.com/kubernetes/kube-aggregator/blob/release-1.9/pkg/apis/apiregistration/v1beta1/types.go#L66-L70
+  # for more information on proper values of this field
+  versionPriority: 15
+  # If true, mutating webhook is configured for Kubernetes workloads
+  enableMutatingWebhook: true
+  # If true, validating webhook is configured for Stash CRDss
+  enableValidatingWebhook: true
+  # CA certificate used by the Kubernetes api server. This field is automatically assigned by the operator.
+  ca: not-ca-cert
+  # If true, bypasses checks that validating webhook is actually enabled in the Kubernetes cluster.
+  bypassValidatingWebhookXray: false
+  # If true, uses kube-apiserver FQDN for AKS cluster to workaround https://github.com/Azure/AKS/issues/522 (default true)
+  useKubeapiserverFqdnForAks: true
+  healthcheck:
+    # If true, enables the readiness and liveliness probes for the operator pod.
+    enabled: false
+  servingCerts:
+    # If true, generates on install/upgrade the certs that allow the kube-apiserver (and potentially ServiceMonitor)
+    # to authenticate operators pods. Otherwise specify certs in `apiserver.servingCerts.{caCrt, serverCrt, serverKey}`.
+    generate: true
+    # CA certficate used by serving certificate of webhook server.
+    caCrt: ""
+    # Serving certficate used by webhook server.
+    serverCrt: ""
+    # Private key for the serving certificate used by webhook server.
+    serverKey: ""
