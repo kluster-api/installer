@@ -1,4 +1,5 @@
 {{ template "aws-credential-manager.prepare-certs" $ }}
+
 {{- if .Values.apiserver.enableMutatingWebhook }}
 apiVersion: admissionregistration.k8s.io/v1
 kind: MutatingWebhookConfiguration
@@ -10,7 +11,7 @@ webhooks:
   - name: vjob-v1.kb.io
     admissionReviewVersions:
       - v1
-    failurePolicy: {{ .Values.apiserver.webhook.failurePolicy }}
+    failurePolicy: Fail
     sideEffects: None
     rules:
       - operations:
