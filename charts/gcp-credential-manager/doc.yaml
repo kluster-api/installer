@@ -1,9 +1,9 @@
 project:
-  name: AWS Credential Manager by AppsCode
-  shortName: AWS Credential Manager
+  name: GCP Credential Manager by AppsCode
+  shortName: GCP Credential Manager
   url: https://github.com/appscode-cloud
-  description: AWS Credential Manager
-  app: a AWS Credential Manager
+  description: GCP Credential Manager
+  app: a GCP Credential Manager
 repository:
   url: https://charts.appscode.com/stable
   name: appscode
