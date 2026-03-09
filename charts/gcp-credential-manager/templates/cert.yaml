@@ -1,0 +1,16 @@
+{{ template "gcp-credential-manager.prepare-certs" $ }}
+
+{{- if or .Values.apiserver.enableMutatingWebhook .Values.apiserver.enableValidatingWebhook }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "gcp-credential-manager.fullname" . }}-apiserver-cert
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "gcp-credential-manager.labels" . | nindent 4 }}
+type: Opaque
+data:
+  ca.crt: {{ $._caCrt }}
+  tls.crt: {{ $._serverCrt }}
+  tls.key: {{ $._serverKey }}
+{{- end }}
