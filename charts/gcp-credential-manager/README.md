@@ -1,6 +1,6 @@
-# AWS Credential Manager
+# GCP Credential Manager
 
-[AWS Credential Manager by AppsCode](https://github.com/appscode-cloud) - AWS Credential Manager
+[GCP Credential Manager by AppsCode](https://github.com/appscode-cloud) - GCP Credential Manager
 
 ## TL;DR;
 
@@ -13,7 +13,7 @@ $ helm upgrade -i gcp-credential-manager appscode/gcp-credential-manager -n kube
 
 ## Introduction
 
-This chart deploys a AWS Credential Manager on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart deploys a GCP Credential Manager on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ To install/upgrade the chart with the release name `gcp-credential-manager`:
 $ helm upgrade -i gcp-credential-manager appscode/gcp-credential-manager -n kubeops --create-namespace --version=v2026.1.20
 ```
 
-The command deploys a AWS Credential Manager on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+The command deploys a GCP Credential Manager on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 
