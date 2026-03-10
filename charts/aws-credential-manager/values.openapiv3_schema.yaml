@@ -438,6 +438,75 @@ properties:
             x-kubernetes-list-type: atomic
         type: object
     type: object
+  apiserver:
+    properties:
+      bypassValidatingWebhookXray:
+        type: boolean
+      ca:
+        type: string
+      enableMutatingWebhook:
+        type: boolean
+      enableValidatingWebhook:
+        type: boolean
+      groupPriorityMinimum:
+        type: integer
+      healthcheck:
+        properties:
+          enabled:
+            type: boolean
+        type: object
+      servingCerts:
+        properties:
+          caCrt:
+            type: string
+          generate:
+            type: boolean
+          serverCrt:
+            type: string
+          serverKey:
+            type: string
+        required:
+        - generate
+        type: object
+      useKubeapiserverFqdnForAks:
+        type: boolean
+      versionPriority:
+        type: integer
+    required:
+    - bypassValidatingWebhookXray
+    - ca
+    - enableMutatingWebhook
+    - enableValidatingWebhook
+    - groupPriorityMinimum
+    - healthcheck
+    - servingCerts
+    - useKubeapiserverFqdnForAks
+    - versionPriority
+    type: object
+  bucketAccessor:
+    properties:
+      awsMaxIntervalSeconds:
+        type: string
+      awsMaxWaitSeconds:
+        type: string
+    required:
+    - awsMaxIntervalSeconds
+    - awsMaxWaitSeconds
+    type: object
+  distro:
+    properties:
+      openshift:
+        type: boolean
+      ubi:
+        enum:
+        - all
+        - catalog
+        - operator
+        type: string
+    required:
+    - openshift
+    - ubi
+    type: object
   fullnameOverride:
     type: string
   image:
@@ -479,6 +548,7 @@ properties:
             format: int32
             type: integer
           service:
+            default: ''
             type: string
         required:
         - port
@@ -578,6 +648,8 @@ properties:
       runAsUser:
         format: int64
         type: integer
+      seLinuxChangePolicy:
+        type: string
       seLinuxOptions:
         properties:
           level:
@@ -604,6 +676,8 @@ properties:
           type: integer
         type: array
         x-kubernetes-list-type: atomic
+      supplementalGroupsPolicy:
+        type: string
       sysctls:
         items:
           properties:
@@ -648,6 +722,7 @@ properties:
             format: int32
             type: integer
           service:
+            default: ''
             type: string
         required:
         - port
@@ -720,6 +795,8 @@ properties:
         items:
           properties:
             name:
+              type: string
+            request:
               type: string
           required:
           - name
@@ -904,10 +981,12 @@ properties:
             diskURI:
               type: string
             fsType:
+              default: ext4
               type: string
             kind:
               type: string
             readOnly:
+              default: false
               type: boolean
           required:
           - diskName
@@ -1284,6 +1363,13 @@ properties:
           required:
           - path
           type: object
+        image:
+          properties:
+            pullPolicy:
+              type: string
+            reference:
+              type: string
+          type: object
         iscsi:
           properties:
             chapAuthDiscovery:
@@ -1297,6 +1383,7 @@ properties:
             iqn:
               type: string
             iscsiInterface:
+              default: default
               type: string
             lun:
               format: int32
@@ -1479,6 +1566,25 @@ properties:
                         type: array
                         x-kubernetes-list-type: atomic
                     type: object
+                  podCertificate:
+                    properties:
+                      certificateChainPath:
+                        type: string
+                      credentialBundlePath:
+                        type: string
+                      keyPath:
+                        type: string
+                      keyType:
+                        type: string
+                      maxExpirationSeconds:
+                        format: int32
+                        type: integer
+                      signerName:
+                        type: string
+                    required:
+                    - keyType
+                    - signerName
+                    type: object
                   secret:
                     properties:
                       items:
@@ -1545,6 +1651,7 @@ properties:
             image:
               type: string
             keyring:
+              default: /etc/ceph/keyring
               type: string
             monitors:
               items:
@@ -1552,6 +1659,7 @@ properties:
               type: array
               x-kubernetes-list-type: atomic
             pool:
+              default: rbd
               type: string
             readOnly:
               type: boolean
@@ -1563,6 +1671,7 @@ properties:
               type: object
               x-kubernetes-map-type: atomic
             user:
+              default: admin
               type: string
           required:
           - image
@@ -1571,6 +1680,7 @@ properties:
         scaleIO:
           properties:
             fsType:
+              default: xfs
               type: string
             gateway:
               type: string
@@ -1588,6 +1698,7 @@ properties:
             sslEnabled:
               type: boolean
             storageMode:
+              default: ThinProvisioned
               type: string
             storagePool:
               type: string
