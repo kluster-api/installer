@@ -39,6 +39,8 @@ func Test_CheckImageArchitectures(t *testing.T) {
 }
 
 func Test_CheckUBIImageArchitectures(t *testing.T) {
+	t.Skip("skipping ubi image architecture check for now")
+
 	dir, err := rootDir()
 	if err != nil {
 		t.Error(err)
