@@ -42,6 +42,12 @@ type ServiceAccountSpec struct {
 	Annotations map[string]string `json:"annotations"`
 }
 
+type StaticServiceAccountSpec struct {
+	Create bool `json:"create"`
+	//+optional
+	Annotations map[string]string `json:"annotations"`
+}
+
 // +kubebuilder:validation:Enum=prometheus.io;prometheus.io/operator;prometheus.io/builtin
 type MonitoringAgent string
 
