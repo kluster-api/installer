@@ -54,11 +54,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Create the name of the service account to use
 */}}
 {{- define "aws-credential-manager.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "aws-credential-manager.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
+aws-credential-manager
 {{- end }}
 
 {{/*

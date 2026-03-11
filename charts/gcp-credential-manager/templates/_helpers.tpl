@@ -54,11 +54,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 Create the name of the service account to use
 */}}
 {{- define "gcp-credential-manager.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "gcp-credential-manager.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
+gcp-credential-manager
 {{- end }}
 
 {{/*

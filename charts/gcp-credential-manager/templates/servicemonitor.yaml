@@ -2,7 +2,7 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: {{ include "capi-ops-manager.fullname" . }}
+  name: {{ include "gcp-credential-manager.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
   {{- if .Values.monitoring.serviceMonitor.labels }}
@@ -10,7 +10,7 @@ metadata:
     {{ $key }}: {{ $val }}
     {{- end }}
   {{- else }}
-    {{- include "capi-ops-manager.selectorLabels" . | nindent 4 }}
+    {{- include "gcp-credential-manager.selectorLabels" . | nindent 4 }}
   {{- end }}
 spec:
   namespaceSelector:
@@ -18,22 +18,20 @@ spec:
     - {{ .Release.Namespace }}
   selector:
     matchLabels:
-      {{- include "capi-ops-manager.selectorLabels" . | nindent 6 }}
+      {{- include "gcp-credential-manager.selectorLabels" . | nindent 6 }}
   endpoints:
-  {{- if .Values.monitoring.operator }}
-  - port: https
+  - targetPort: 9443
     authorization:
       credentials:
         key: token
-        name: {{ include "capi-ops-manager.fullname" . }}-metrics-token
+        name: {{ include "gcp-credential-manager.fullname" . }}-metrics-token
       type: Bearer
     path: /metrics
     scheme: https
     tlsConfig:
       ca:
         secret:
-          name: {{ include "capi-ops-manager.fullname" . }}-webhook-cert
-          key: tls.crt
-      serverName: "{{ include "capi-ops-manager.fullname" . }}.{{ .Release.Namespace }}.svc"
-  {{- end }}
+          name: {{ include "gcp-credential-manager.fullname" . }}-apiserver-cert
+          key: ca.crt
+      serverName: "{{ include "gcp-credential-manager.webhookServiceName" . }}.{{ .Release.Namespace }}.svc"
 {{- end }}

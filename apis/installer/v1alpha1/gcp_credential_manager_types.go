@@ -77,13 +77,14 @@ type GcpCredentialManagerSpec struct {
 	// +optional
 	LivenessProbe *core.Probe `json:"livenessProbe"`
 	// +optional
-	ReadinessProbe *core.Probe        `json:"readinessProbe"`
-	Service        ServiceSpec        `json:"service"`
-	ServiceAccount ServiceAccountSpec `json:"serviceAccount"`
-	Volumes        []core.Volume      `json:"volumes"`
-	VolumeMounts   []core.VolumeMount `json:"volumeMounts"`
+	ReadinessProbe *core.Probe              `json:"readinessProbe"`
+	Service        ServiceSpec              `json:"service"`
+	ServiceAccount StaticServiceAccountSpec `json:"serviceAccount"`
+	Volumes        []core.Volume            `json:"volumes"`
+	VolumeMounts   []core.VolumeMount       `json:"volumeMounts"`
 	// +optional
-	Distro shared.DistroSpec `json:"distro"`
+	Distro     shared.DistroSpec `json:"distro"`
+	Monitoring Monitoring        `json:"monitoring"`
 	// +optional
 	Apiserver GcpCredentialManagerApiserver `json:"apiserver"`
 	// +optional
