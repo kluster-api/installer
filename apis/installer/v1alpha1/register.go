@@ -56,6 +56,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&AwsCredentialManager{},
 		&AwsCredentialManagerList{},
+		&GcpCredentialManager{},
+		&GcpCredentialManagerList{},
 		&CapaVpcPeeringOperator{},
 		&CapaVpcPeeringOperatorList{},
 		&CapiOpsManager{},

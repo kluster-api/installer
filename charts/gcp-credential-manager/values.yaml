@@ -1,4 +1,4 @@
-# Default values for aws-credential-manager.
+# Default values for gcp-credential-manager.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -9,7 +9,7 @@ registryFQDN: ghcr.io
 image:
   # Docker registry used to pull app container image
   registry: appscode
-  repository: aws-credential-manager
+  repository: gcp-credential-manager
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -42,16 +42,6 @@ service:
   type: ClusterIP
   port: 8081
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
 
 livenessProbe:
   httpGet:
@@ -67,19 +57,8 @@ readinessProbe:
     scheme: HTTP
   initialDelaySeconds: 5
   periodSeconds: 10
-# Additional volumes on the output Deployment definition.
 volumes: []
-# - name: foo
-#   secret:
-#     secretName: mysecret
-#     optional: false
-
-# Additional volumeMounts on the output Deployment definition.
 volumeMounts: []
-# - name: foo
-#   mountPath: "/etc/foo"
-#   readOnly: true
-
 nodeSelector: {}
 tolerations: []
 affinity: {}
@@ -91,8 +70,8 @@ distro:
   ubi: ""
 
 bucketAccessor:
-  awsMaxIntervalSeconds: "5"
-  awsMaxWaitSeconds: "300"
+  gcsMaxIntervalSeconds: "5"
+  gcsMaxWaitSeconds: "300"
 
 apiserver:
   # The minimum priority the webhook api group should have at least. Please see

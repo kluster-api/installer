@@ -23,12 +23,12 @@ import (
 )
 
 const (
-	ResourceKindAwsCredentialManager = "AwsCredentialManager"
-	ResourceAwsCredentialManager     = "awscredentialmanager"
-	ResourceAwsCredentialManagers    = "awscredentialmanagers"
+	ResourceKindGcpCredentialManager = "GcpCredentialManager"
+	ResourceGcpCredentialManager     = "gcpcredentialmanager"
+	ResourceGcpCredentialManagers    = "gcpcredentialmanagers"
 )
 
-// AwsCredentialManager defines the schama for AwsCredentialManager operator installer.
+// GcpCredentialManager defines the schema for GcpCredentialManager operator installer.
 
 // +genclient
 // +genclient:skipVerbs=updateStatus
@@ -36,14 +36,14 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-type AwsCredentialManager struct {
+type GcpCredentialManager struct {
 	metav1.TypeMeta   `json:",inline,omitempty"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
-	Spec              AwsCredentialManagerSpec `json:"spec,omitempty"`
+	Spec              GcpCredentialManagerSpec `json:"spec,omitempty"`
 }
 
-// AwsCredentialManagerSpec is the schema for Identity Server values file
-type AwsCredentialManagerSpec struct {
+// GcpCredentialManagerSpec is the schema for GCP Credential Manager values file.
+type GcpCredentialManagerSpec struct {
 	//+optional
 	NameOverride string `json:"nameOverride"`
 	//+optional
@@ -59,7 +59,7 @@ type AwsCredentialManagerSpec struct {
 	//+optional
 	PodLabels map[string]string `json:"podLabels"`
 	// PodSecurityContext holds pod-level security attributes and common container settings.
-	// Optional: Defaults to empty.  See type description for default values of each field.
+	// Optional: Defaults to empty. See type description for default values of each field.
 	// +optional
 	PodSecurityContext *core.PodSecurityContext `json:"podSecurityContext"`
 	//+optional
@@ -71,7 +71,7 @@ type AwsCredentialManagerSpec struct {
 	// If specified, the pod's tolerations.
 	// +optional
 	Tolerations []core.Toleration `json:"tolerations"`
-	// If specified, the pod's scheduling constraints
+	// If specified, the pod's scheduling constraints.
 	// +optional
 	Affinity *core.Affinity `json:"affinity"`
 	// +optional
@@ -85,24 +85,12 @@ type AwsCredentialManagerSpec struct {
 	// +optional
 	Distro shared.DistroSpec `json:"distro"`
 	// +optional
-	Apiserver AwsCredentialManagerApiserver `json:"apiserver"`
+	Apiserver GcpCredentialManagerApiserver `json:"apiserver"`
 	// +optional
-	BucketAccessor BucketAccessor `json:"bucketAccessor"`
+	BucketAccessor GcpBucketAccessor `json:"bucketAccessor"`
 }
 
-type ImageReference struct {
-	Registry   string `json:"registry"`
-	Repository string `json:"repository"`
-	Tag        string `json:"tag"`
-	PullPolicy string `json:"pullPolicy"`
-}
-
-type ServiceSpec struct {
-	Type string `json:"type"`
-	Port int    `json:"port"`
-}
-
-type AwsCredentialManagerApiserver struct {
+type GcpCredentialManagerApiserver struct {
 	GroupPriorityMinimum        int             `json:"groupPriorityMinimum"`
 	VersionPriority             int             `json:"versionPriority"`
 	EnableMutatingWebhook       bool            `json:"enableMutatingWebhook"`
@@ -114,17 +102,17 @@ type AwsCredentialManagerApiserver struct {
 	ServingCerts                ServingCerts    `json:"servingCerts"`
 }
 
-type BucketAccessor struct {
-	AwsMaxIntervalSeconds string `json:"awsMaxIntervalSeconds"`
-	AwsMaxWaitSeconds     string `json:"awsMaxWaitSeconds"`
+type GcpBucketAccessor struct {
+	GcsMaxIntervalSeconds string `json:"gcsMaxIntervalSeconds"`
+	GcsMaxWaitSeconds     string `json:"gcsMaxWaitSeconds"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// AwsCredentialManagerList is a list of AwsCredentialManagers
-type AwsCredentialManagerList struct {
+// GcpCredentialManagerList is a list of GcpCredentialManagers.
+type GcpCredentialManagerList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	// Items is a list of AwsCredentialManager CRD objects
-	Items []AwsCredentialManager `json:"items,omitempty"`
+	// Items is a list of GcpCredentialManager CRD objects.
+	Items []GcpCredentialManager `json:"items,omitempty"`
 }

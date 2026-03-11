@@ -485,13 +485,13 @@ properties:
     type: object
   bucketAccessor:
     properties:
-      awsMaxIntervalSeconds:
+      gcsMaxIntervalSeconds:
         type: string
-      awsMaxWaitSeconds:
+      gcsMaxWaitSeconds:
         type: string
     required:
-    - awsMaxIntervalSeconds
-    - awsMaxWaitSeconds
+    - gcsMaxIntervalSeconds
+    - gcsMaxWaitSeconds
     type: object
   distro:
     properties:
