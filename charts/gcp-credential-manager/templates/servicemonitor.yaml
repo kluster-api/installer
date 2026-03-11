@@ -1,0 +1,35 @@
+{{- if eq .Values.monitoring.agent "prometheus.io/operator" }}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "gcp-credential-manager.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+  {{- if .Values.monitoring.serviceMonitor.labels }}
+    {{- range $key, $val := .Values.monitoring.serviceMonitor.labels }}
+    {{ $key }}: {{ $val }}
+    {{- end }}
+  {{- else }}
+    {{- include "gcp-credential-manager.selectorLabels" . | nindent 4 }}
+  {{- end }}
+spec:
+  namespaceSelector:
+    matchNames:
+    - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      {{- include "gcp-credential-manager.selectorLabels" . | nindent 6 }}
+  endpoints:
+  - targetPort: 9443
+    bearerTokenSecret:
+      key: token
+      name: {{ include "gcp-credential-manager.fullname" . }}-metrics-token
+    path: /metrics
+    scheme: https
+    tlsConfig:
+      ca:
+        secret:
+          name: {{ include "gcp-credential-manager.fullname" . }}-apiserver-cert
+          key: ca.crt
+      serverName: "{{ include "gcp-credential-manager.webhookServiceName" . }}.{{ .Release.Namespace }}.svc"
+{{- end }}
