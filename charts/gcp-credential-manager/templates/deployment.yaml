@@ -47,7 +47,9 @@ spec:
             - --metrics-bind-address=:8443
             - --leader-elect=false
             - --health-probe-bind-address=:{{ .Values.service.port }}
+            {{- if or .Values.apiserver.enableMutatingWebhook .Values.apiserver.enableValidatingWebhook }}
             - --webhook-cert-path=/var/serving-cert
+            {{- end }}
             - --gcs-max-interval-seconds={{ .Values.bucketAccessor.gcsMaxIntervalSeconds }}
             - --gcs-max-wait-seconds={{ .Values.bucketAccessor.gcsMaxWaitSeconds }}
           ports:
@@ -61,16 +63,20 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
-            - mountPath: /var/serving-cert
-              name: serving-cert
+            {{- if or .Values.apiserver.enableMutatingWebhook .Values.apiserver.enableValidatingWebhook }}
+              - mountPath: /var/serving-cert
+                name: serving-cert
+            {{- end }}
           {{- with .Values.volumeMounts }}
             {{- toYaml . | nindent 12 }}
           {{- end }}
       volumes:
-      - name: serving-cert
-        secret:
-          defaultMode: 420
-          secretName: {{ include "gcp-credential-manager.fullname" . }}-apiserver-cert
+      {{- if or .Values.apiserver.enableMutatingWebhook .Values.apiserver.enableValidatingWebhook }}
+        - name: serving-cert
+          secret:
+            defaultMode: 420
+            secretName: {{ include "gcp-credential-manager.fullname" . }}-apiserver-cert
+      {{- end }}
       {{- with .Values.volumes }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
