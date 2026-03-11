@@ -22,7 +22,9 @@ spec:
   endpoints:
   {{- if .Values.monitoring.operator }}
   - port: https
-    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    bearerTokenSecret:
+      key: token
+      name: {{ include "capi-ops-manager.fullname" . }}-metrics-token
     path: /metrics
     scheme: https
     tlsConfig:

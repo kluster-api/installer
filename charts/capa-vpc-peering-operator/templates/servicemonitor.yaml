@@ -19,7 +19,9 @@ spec:
       {{- include "capa-vpc-peering-operator.selectorLabels" . | nindent 6 }}
   endpoints:
   - port: api
-    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    bearerTokenSecret:
+      key: token
+      name: {{ include "capa-vpc-peering-operator.fullname" . }}-metrics-token
     scheme: https
     tlsConfig:
       ca:

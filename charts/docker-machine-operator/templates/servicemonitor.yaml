@@ -19,7 +19,9 @@ spec:
       {{- include "docker-machine-operator.selectorLabels" . | nindent 6 }}
   endpoints:
   - port: api
-    bearerTokenFile: /var/run/secrets/kubernetes.io/serviceaccount/token
+    bearerTokenSecret:
+      key: token
+      name: {{ include "docker-machine-operator.fullname" . }}-metrics-token
     scheme: https
     tlsConfig:
       ca:
