@@ -21,9 +21,11 @@ spec:
       {{- include "gcp-credential-manager.selectorLabels" . | nindent 6 }}
   endpoints:
   - targetPort: 9443
-    bearerTokenSecret:
-      key: token
-      name: {{ include "gcp-credential-manager.fullname" . }}-metrics-token
+    authorization:
+      credentials:
+        key: token
+        name: {{ include "gcp-credential-manager.fullname" . }}-metrics-token
+      type: Bearer
     path: /metrics
     scheme: https
     tlsConfig:

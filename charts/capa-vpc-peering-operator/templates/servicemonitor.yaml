@@ -19,9 +19,11 @@ spec:
       {{- include "capa-vpc-peering-operator.selectorLabels" . | nindent 6 }}
   endpoints:
   - port: api
-    bearerTokenSecret:
-      key: token
-      name: {{ include "capa-vpc-peering-operator.fullname" . }}-metrics-token
+    authorization:
+      credentials:
+        key: token
+        name: {{ include "capa-vpc-peering-operator.fullname" . }}-metrics-token
+      type: Bearer
     scheme: https
     tlsConfig:
       ca:

@@ -22,9 +22,11 @@ spec:
   endpoints:
   {{- if .Values.monitoring.operator }}
   - port: https
-    bearerTokenSecret:
-      key: token
-      name: {{ include "capi-ops-manager.fullname" . }}-metrics-token
+    authorization:
+      credentials:
+        key: token
+        name: {{ include "capi-ops-manager.fullname" . }}-metrics-token
+      type: Bearer
     path: /metrics
     scheme: https
     tlsConfig:
