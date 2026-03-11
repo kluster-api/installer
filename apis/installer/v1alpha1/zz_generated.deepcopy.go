@@ -180,6 +180,7 @@ func (in *AwsCredentialManagerSpec) DeepCopyInto(out *AwsCredentialManagerSpec) 
 		}
 	}
 	out.Distro = in.Distro
+	in.Monitoring.DeepCopyInto(&out.Monitoring)
 	out.Apiserver = in.Apiserver
 	out.BucketAccessor = in.BucketAccessor
 }
@@ -773,6 +774,7 @@ func (in *GcpCredentialManagerSpec) DeepCopyInto(out *GcpCredentialManagerSpec) 
 		}
 	}
 	out.Distro = in.Distro
+	in.Monitoring.DeepCopyInto(&out.Monitoring)
 	out.Apiserver = in.Apiserver
 	out.BucketAccessor = in.BucketAccessor
 }

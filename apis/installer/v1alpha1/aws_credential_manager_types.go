@@ -83,7 +83,8 @@ type AwsCredentialManagerSpec struct {
 	Volumes        []core.Volume      `json:"volumes"`
 	VolumeMounts   []core.VolumeMount `json:"volumeMounts"`
 	// +optional
-	Distro shared.DistroSpec `json:"distro"`
+	Distro     shared.DistroSpec `json:"distro"`
+	Monitoring Monitoring        `json:"monitoring"`
 	// +optional
 	Apiserver AwsCredentialManagerApiserver `json:"apiserver"`
 	// +optional
