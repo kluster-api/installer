@@ -17,17 +17,16 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 azure:
-  # managedIdentityName, resourceGroupName and subscriptionId are required for identity binding.
-  managedIdentityName: ""
-  resourceGroupName: ""
-  subscriptionId: ""
+  # clientId, tenantId are required for identity binding.
+  clientId: ""
+  tenantId: ""
 serviceAccount:
   # Specifies whether a service account should be created
   create: true
   # Annotations to add to the service account
   annotations: {}
-podAnnotations: {""}
-podLabels: {}
+podAnnotations: {azure.workload.identity/use-identity-binding: "true"}
+podLabels: {azure.workload.identity/use: "true"}
 podSecurityContext: {}
   # fsGroup: 2000
 

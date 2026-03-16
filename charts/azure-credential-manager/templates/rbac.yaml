@@ -48,14 +48,6 @@ rules:
 - apiGroups:
   - ""
   resources:
-  - configmaps
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
-  - ""
-  resources:
   - namespaces
   verbs:
   - get
@@ -87,6 +79,19 @@ rules:
   - get
   - patch
   - update
+- apiGroups:
+    - "rbac.authorization.k8s.io"
+  resources:
+    - clusterroles
+    - clusterrolebindings
+  verbs:
+    - get
+    - list
+    - watch
+    - update
+    - patch
+    - delete
+    - create
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -133,3 +138,31 @@ subjects:
 - kind: ServiceAccount
   name: {{ include "azure-credential-manager.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
+---
+{{- if ne .Values.azure.clientId "" }}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: use-mi-{{.Values.azure.clientId}}
+  labels:
+      {{- include "azure-credential-manager.labels" . | nindent 4 }}
+rules:
+  - verbs : ["use-managed-identity"]
+    apiGroups: ["cid.wi.aks.azure.com"]
+    resources: [{{.Values.azure.clientId}}]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: use-mi-{{.Values.azure.clientId}}
+  labels:
+      {{- include "azure-credential-manager.labels" . | nindent 4 }}
+roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: use-mi-{{.Values.azure.clientId}}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "azure-credential-manager.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+{{- end }}

@@ -56,7 +56,6 @@ Create the name of the service account to use
 {{- define "azure-credential-manager.serviceAccountName" -}}
 azure-credential-manager
 {{- end }}
-
 {{/*
 Returns the registry used for image docker image
 */}}
