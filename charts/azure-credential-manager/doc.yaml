@@ -1,0 +1,18 @@
+project:
+  name: Azure Credential Manager by AppsCode
+  shortName: Azure Credential Manager
+  url: https://github.com/appscode-cloud
+  description: Azure Credential Manager
+  app: a Azure Credential Manager
+repository:
+  url: https://charts.appscode.com/stable
+  name: appscode
+chart:
+  name: azure-credential-manager
+  values: -- generate from values file --
+  valuesExample: -- generate from values file --
+prerequisites:
+- Kubernetes 1.29+
+release:
+  name: azure-credential-manager
+  namespace: kubeops
