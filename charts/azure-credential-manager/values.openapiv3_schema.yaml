@@ -483,15 +483,22 @@ properties:
     - useKubeapiserverFqdnForAks
     - versionPriority
     type: object
+  azure:
+    properties:
+      clientId:
+        type: string
+      tenantId:
+        type: string
+    type: object
   bucketAccessor:
     properties:
-      gcsMaxIntervalSeconds:
+      azureMaxIntervalSeconds:
         type: string
-      gcsMaxWaitSeconds:
+      azureMaxWaitSeconds:
         type: string
     required:
-    - gcsMaxIntervalSeconds
-    - gcsMaxWaitSeconds
+    - azureMaxIntervalSeconds
+    - azureMaxWaitSeconds
     type: object
   distro:
     properties:
