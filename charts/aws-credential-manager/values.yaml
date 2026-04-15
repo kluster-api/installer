@@ -91,6 +91,8 @@ bucketAccessor:
   awsMaxIntervalSeconds: "5"
   awsMaxWaitSeconds: "300"
 
+roleCreationLimit: 100
+
 apiserver:
   # The minimum priority the webhook api group should have at least. Please see
   # https://github.com/kubernetes/kube-aggregator/blob/release-1.9/pkg/apis/apiregistration/v1beta1/types.go#L58-L64
