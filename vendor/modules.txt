@@ -798,7 +798,7 @@ kmodules.xyz/go-containerregistry/name
 # kmodules.xyz/image-packer v0.0.0-20260211014345-daa6afa3ceba
 ## explicit; go 1.25
 kmodules.xyz/image-packer/pkg/lib
-# kmodules.xyz/resource-metadata v0.42.9
+# kmodules.xyz/resource-metadata v0.43.1
 ## explicit; go 1.25
 kmodules.xyz/resource-metadata/apis/shared
 # kmodules.xyz/schema-checker v0.4.2
