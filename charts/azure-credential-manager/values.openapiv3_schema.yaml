@@ -492,11 +492,28 @@ properties:
     type: object
   bucketAccessor:
     properties:
+      azureBlobTestImage:
+        properties:
+          pullPolicy:
+            type: string
+          registry:
+            type: string
+          repository:
+            type: string
+          tag:
+            type: string
+        required:
+        - pullPolicy
+        - registry
+        - repository
+        - tag
+        type: object
       azureMaxIntervalSeconds:
         type: string
       azureMaxWaitSeconds:
         type: string
     required:
+    - azureBlobTestImage
     - azureMaxIntervalSeconds
     - azureMaxWaitSeconds
     type: object

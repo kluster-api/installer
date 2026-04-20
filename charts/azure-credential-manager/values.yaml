@@ -73,6 +73,7 @@ distro:
 bucketAccessor:
   azureMaxIntervalSeconds: "5"
   azureMaxWaitSeconds: "300"
+  azureBlobTestImage: "ghcr.io/appscode/azure-credential-manager:v0.1.0"
 
 apiserver:
   # The minimum priority the webhook api group should have at least. Please see
