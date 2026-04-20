@@ -89,6 +89,8 @@ type AwsCredentialManagerSpec struct {
 	Apiserver AwsCredentialManagerApiserver `json:"apiserver"`
 	// +optional
 	BucketAccessor BucketAccessor `json:"bucketAccessor"`
+	// +optional
+	RoleCreationLimit int32 `json:"roleCreationLimit"`
 }
 
 type ImageReference struct {

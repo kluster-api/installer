@@ -7,8 +7,8 @@
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable
 $ helm repo update
-$ helm search repo appscode/aws-credential-manager --version=v2026.1.20
-$ helm upgrade -i aws-credential-manager appscode/aws-credential-manager -n kubeops --create-namespace --version=v2026.1.20
+$ helm search repo appscode/aws-credential-manager --version=v2026.4.16
+$ helm upgrade -i aws-credential-manager appscode/aws-credential-manager -n kubeops --create-namespace --version=v2026.4.16
 ```
 
 ## Introduction
@@ -24,7 +24,7 @@ This chart deploys a AWS Credential Manager on a [Kubernetes](http://kubernetes.
 To install/upgrade the chart with the release name `aws-credential-manager`:
 
 ```bash
-$ helm upgrade -i aws-credential-manager appscode/aws-credential-manager -n kubeops --create-namespace --version=v2026.1.20
+$ helm upgrade -i aws-credential-manager appscode/aws-credential-manager -n kubeops --create-namespace --version=v2026.4.16
 ```
 
 The command deploys a AWS Credential Manager on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
@@ -84,6 +84,7 @@ The following table lists the configurable parameters of the `aws-credential-man
 | distro.ubi                            | Set operator or all to use ubi images                                                                                                                                                                                                             | <code>""</code>                                                                                                                                                                                |
 | bucketAccessor.awsMaxIntervalSeconds  |                                                                                                                                                                                                                                                   | <code>"5"</code>                                                                                                                                                                               |
 | bucketAccessor.awsMaxWaitSeconds      |                                                                                                                                                                                                                                                   | <code>"300"</code>                                                                                                                                                                             |
+| roleCreationLimit                     |                                                                                                                                                                                                                                                   | <code>100</code>                                                                                                                                                                               |
 | apiserver.groupPriorityMinimum        | The minimum priority the webhook api group should have at least. Please see https://github.com/kubernetes/kube-aggregator/blob/release-1.9/pkg/apis/apiregistration/v1beta1/types.go#L58-L64 for more information on proper values of this field. | <code>10000</code>                                                                                                                                                                             |
 | apiserver.versionPriority             | The ordering of the webhook api inside of the group. Please see https://github.com/kubernetes/kube-aggregator/blob/release-1.9/pkg/apis/apiregistration/v1beta1/types.go#L66-L70 for more information on proper values of this field              | <code>15</code>                                                                                                                                                                                |
 | apiserver.enableMutatingWebhook       | If true, mutating webhook is configured for Kubernetes workloads                                                                                                                                                                                  | <code>true</code>                                                                                                                                                                              |
@@ -103,12 +104,12 @@ The following table lists the configurable parameters of the `aws-credential-man
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i aws-credential-manager appscode/aws-credential-manager -n kubeops --create-namespace --version=v2026.1.20 --set replicaCount=1
+$ helm upgrade -i aws-credential-manager appscode/aws-credential-manager -n kubeops --create-namespace --version=v2026.4.16 --set replicaCount=1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i aws-credential-manager appscode/aws-credential-manager -n kubeops --create-namespace --version=v2026.1.20 --values values.yaml
+$ helm upgrade -i aws-credential-manager appscode/aws-credential-manager -n kubeops --create-namespace --version=v2026.4.16 --values values.yaml
 ```

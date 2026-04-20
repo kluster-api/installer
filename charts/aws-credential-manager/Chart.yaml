@@ -2,8 +2,8 @@ apiVersion: v2
 name: aws-credential-manager
 description: A Helm chart for AWS Credential Manager
 type: application
-version: v2026.1.20
-appVersion: v0.0.3
+version: v2026.4.16
+appVersion: v0.1.0
 home: https://github.com/appscode-cloud
 icon: https://cdn.appscode.com/images/products/bytebuilders/icons/android-icon-192x192.png
 sources:

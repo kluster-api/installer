@@ -841,6 +841,9 @@ properties:
           x-kubernetes-int-or-string: true
         type: object
     type: object
+  roleCreationLimit:
+    format: int32
+    type: integer
   securityContext:
     properties:
       allowPrivilegeEscalation:

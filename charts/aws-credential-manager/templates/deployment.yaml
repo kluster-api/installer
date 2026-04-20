@@ -50,6 +50,7 @@ spec:
             - --webhook-cert-path=/var/serving-cert
             - --aws-max-interval-seconds={{ .Values.bucketAccessor.awsMaxIntervalSeconds }}
             - --aws-max-wait-seconds={{ .Values.bucketAccessor.awsMaxWaitSeconds }}
+            - --role-creation-limit={{ .Values.roleCreationLimit }}
           ports:
             - containerPort: 9443
               name: webhook-server

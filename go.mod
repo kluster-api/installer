@@ -6,7 +6,7 @@ require (
 	k8s.io/api v0.34.3
 	k8s.io/apimachinery v0.34.3
 	kmodules.xyz/image-packer v0.0.0-20260211014345-daa6afa3ceba
-	kmodules.xyz/resource-metadata v0.42.9
+	kmodules.xyz/resource-metadata v0.43.1
 	kmodules.xyz/schema-checker v0.4.2
 )
 
