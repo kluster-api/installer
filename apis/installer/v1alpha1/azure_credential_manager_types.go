@@ -113,9 +113,8 @@ type AzureCredentialManagerApiserver struct {
 }
 
 type AzureBucketAccessor struct {
-	AzureMaxIntervalSeconds string         `json:"azureMaxIntervalSeconds"`
-	AzureMaxWaitSeconds     string         `json:"azureMaxWaitSeconds"`
-	AzureBlobTestImage      ImageReference `json:"azureBlobTestImage"`
+	AzureMaxIntervalSeconds string `json:"azureMaxIntervalSeconds"`
+	AzureMaxWaitSeconds     string `json:"azureMaxWaitSeconds"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

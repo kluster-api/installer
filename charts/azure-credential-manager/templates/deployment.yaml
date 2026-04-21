@@ -52,7 +52,7 @@ spec:
             {{- end }}
             - --azure-max-interval-seconds={{ .Values.bucketAccessor.azureMaxIntervalSeconds }}
             - --azure-max-wait-seconds={{ .Values.bucketAccessor.azureMaxWaitSeconds }}
-            - --azure-blob-test-image={{ .Values.bucketAccessor.azureBlobTestImage }}
+            - --azure-blob-test-image={{ include "image.registry" . }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}{{ include "operator.ubi" . }}
           ports:
             - containerPort: 9443
               name: webhook-server
