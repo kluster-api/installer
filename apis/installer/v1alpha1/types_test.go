@@ -26,7 +26,8 @@ import (
 )
 
 func TestDefaultValues(t *testing.T) {
-	checker := sc.New(os.DirFS("../../.."),
+	checker := sc.New(
+		os.DirFS("../../.."),
 		sc.TestCase{Obj: v1alpha1.AwsCredentialManagerSpec{}},
 		sc.TestCase{Obj: v1alpha1.GcpCredentialManagerSpec{}},
 		sc.TestCase{Obj: v1alpha1.CapaVpcPeeringOperatorSpec{}},
