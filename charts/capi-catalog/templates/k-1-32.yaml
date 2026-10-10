@@ -1,0 +1,38 @@
+apiVersion: catalog.klusters.dev/v1alpha1
+kind: CapiVersion
+metadata:
+  name: "1.32"
+  labels:
+    {{- include "capi-catalog.labels" . | nindent 4 }}
+spec:
+  capa:
+    deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capa-deployer") $) }}:v1.32'
+    ebsCSIDriverVersion: "v1.32.0-eksbuild.1"
+    certManagerVersion: "v1.17.1"
+    gatewayAPIVersion: "v1.0.0"
+    capiVersion: "v1.9.7"
+    infrastructureVersion : "v2.8.1"
+  capg:
+    deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capg-deployer") $) }}:v1.32'
+    certManagerVersion: "v1.17.1"
+    gatewayAPIVersion: "v1.0.0"
+    capiVersion: "v1.9.7"
+    infrastructureVersion: "v1.9.0"
+  capz:
+    deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capz-deployer") $) }}:v1.32'
+    certManagerVersion: "v1.17.1"
+    gatewayAPIVersion: "v1.0.0"
+    capiVersion: "v1.9.7"
+    infrastructureVersion: "v1.19.2"
+  caph:
+    deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/caph-deployer") $) }}:v1.32'
+    certManagerVersion: "v1.15.3"
+    gatewayAPIVersion: "v1.0.0"
+    capiVersion: "v1.7.4"
+    infrastructureVersion: "v1.0.0"
+  capk:
+    deployerImage: '{{ include "image.ghcr" (merge (dict "_repo" "appscode/capk-deployer") $) }}:v1.32'
+    certManagerVersion: "v1.17.0"
+    gatewayAPIVersion: "v1.0.0"
+    capiVersion: "v1.7.4"
+    infrastructureVersion: "v0.1.9"
